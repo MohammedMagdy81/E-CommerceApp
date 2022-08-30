@@ -1,3 +1,19 @@
 <resources>
-    <string name="app_name">E-Commerce</string>
+    <string name="app_name">Homeify</string>
+    <string name="right_address">The Right Address\n For Shopping\n Anyday</string>
+    <string name="quality">it is now very Easy to reach The \n Best Quality Among All the \n Products On the internet .</string>
+    <string name="start">Start</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="e_commerce">E-Commerce</string>
+    <string name="don_t_have_account_register_here">Don\'t Have Account ?</string>
+    <string name="let_s_login">Let\'s Login</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_e_mail">E-mail</string>
+    <string name="forget_password">Forget Password ?</string>
+    <string name="register_here">Register Here</string>
+    <string name="let_s_register">Let\'s Register</string>
+    <string name="do_you_have_account">Do You Have Account ?</string>
+    <string name="hint_first_name">First Name</string>
+    <string name="hint_last_name">Last Name</string>
 </resources>
