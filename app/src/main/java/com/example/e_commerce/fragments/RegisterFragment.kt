@@ -12,10 +12,13 @@ import com.example.e_commerce.R
 import com.example.e_commerce.data.User
 import com.example.e_commerce.databinding.FragmentRegisterBinding
 import com.example.e_commerce.mvvm.RegisterViewModel
+import com.example.e_commerce.utils.RegisterValidation
 import com.example.e_commerce.utils.Resources
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @AndroidEntryPoint
 class RegisterFragment:Fragment() {
@@ -36,7 +39,6 @@ class RegisterFragment:Fragment() {
 
     private fun initClickListener() {
         binding.apply {
-
             registerButtonRegister.setOnClickListener {
                 val user=User(registerEditTextFirstName.text.toString(),
                     registerEditTextLastName.text.toString(),
@@ -68,6 +70,27 @@ class RegisterFragment:Fragment() {
 
                  }
              }
+        }
+
+        lifecycleScope.launchWhenStarted {
+            registerViewModel.validation.collect{validation->
+                if (validation.email is RegisterValidation.Failed){
+                    withContext(Dispatchers.Main){
+                        binding.registerEditTextEMail.apply {
+                            requestFocus()
+                            error=validation.email.message
+                        }
+                    }
+                }
+                if (validation.password is RegisterValidation.Failed){
+                    withContext(Dispatchers.Main){
+                        binding.registerEditTextPassword.apply {
+                            requestFocus()
+                            error=validation.password.message
+                        }
+                    }
+                }
+            }
         }
 
     }
