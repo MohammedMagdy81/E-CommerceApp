@@ -5,12 +5,16 @@
         <item name="android:fontFamily">@font/poppins_thin</item>
         <item name="android:textColor">@color/g_black</item>
         <item name="android:textSize">@dimen/h4TextSize</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="h2">
         <item name="android:fontFamily">@font/poppins_light</item>
         <item name="android:textColor">@color/g_gray700</item>
         <item name="android:textSize">@dimen/h2TextSize</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="h3">
@@ -19,6 +23,7 @@
         <item name="android:textSize">@dimen/h3TextSize</item>
     </style>
 
+
     <style name="blueButtonStyle">
         <item name="android:background">@drawable/blue_background</item>
         <item name="android:fontFamily">@font/poppins_thin</item>
@@ -26,6 +31,7 @@
         <item name="android:textSize">@dimen/h2TextSize</item>
         <item name="android:textAllCaps">false</item>
     </style>
+
 
     <style name="whiteButtonStyle">
         <item name="android:background">@drawable/white_background</item>

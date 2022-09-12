@@ -13,9 +13,11 @@
         <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/drawable/white_background.xml" value="0.1365" />
         <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/layout/activity_login_register.xml" value="0.176" />
         <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/layout/activity_shopping.xml" value="0.25" />
         <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/layout/fragment_account_option.xml" value="0.2" />
+        <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/layout/fragment_account_options.xml" value="0.2" />
         <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/layout/fragment_introduction.xml" value="0.2" />
-        <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/layout/fragment_login.xml" value="0.2" />
+        <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/layout/fragment_login.xml" value="0.176" />
         <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/layout/fragment_register.xml" value="0.2" />
       </map>
     </option>
