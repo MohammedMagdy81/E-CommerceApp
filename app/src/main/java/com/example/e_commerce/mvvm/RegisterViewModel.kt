@@ -30,7 +30,6 @@ class RegisterViewModel @Inject constructor
     val registerChannel = _registerChannel.receiveAsFlow()
 
     fun createAccountWithEmailAndPassword(user: User, password: String) {
-
         if (checkValidation(user, password)) {
             runBlocking {
                 _register.emit(Resources.Loading())
@@ -40,7 +39,6 @@ class RegisterViewModel @Inject constructor
                 .addOnSuccessListener {
                     it.user.let { firebaseUser ->
                         saveUserToDatabase(firebaseUser!!.uid, user)
-
                         // _register.value = Resources.Success(firebaseUser)
                     }
                 }

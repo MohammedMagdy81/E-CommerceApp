@@ -13,6 +13,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -38,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:text="@string/let_s_register"
-                android:textSize="40sp"
+                android:textSize="36sp"
                 app:layout_constraintEnd_toEndOf="@id/registerGuidelineright"
                 app:layout_constraintStart_toStartOf="@id/registerGuidelineleft"
                 app:layout_constraintTop_toBottomOf="@id/register_text_app_name" />
@@ -129,10 +130,10 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="32dp"
                 android:text="@string/register"
-                app:spinning_bar_color="@color/white"
                 app:layout_constraintEnd_toEndOf="@id/registerGuidelineright"
                 app:layout_constraintStart_toStartOf="@id/registerGuidelineleft"
-                app:layout_constraintTop_toBottomOf="@id/registerEditTextPassword" />
+                app:layout_constraintTop_toBottomOf="@id/registerEditTextPassword"
+                app:spinning_bar_color="@color/white" />
 
             <ImageView
                 android:id="@+id/facebook_login"
@@ -188,7 +189,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
 
 
 </FrameLayout>
