@@ -19,5 +19,9 @@
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="do_you_have_account">Do You have Account ?</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="we_will_send_link_to_you_to_reset_password">We Will Send Link to You to Reset Password</string>
+    <string name="cancel">Cancel</string>
+    <string name="reset">Reset</string>
 
 </resources>

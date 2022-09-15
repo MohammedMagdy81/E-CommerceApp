@@ -20,8 +20,10 @@ class LoginViewModel @Inject constructor(
     private val _login = MutableSharedFlow<Resources<FirebaseUser>>()
     val login = _login.asSharedFlow()
 
-    fun loginUser(email: String, password: String) {
+    private val _resetPassword = MutableSharedFlow<Resources<String>>()
+    val resetPassword = _resetPassword.asSharedFlow()
 
+    fun loginUser(email: String, password: String) {
         viewModelScope.launch {
             _login.emit(Resources.Loading())
         }
@@ -38,6 +40,24 @@ class LoginViewModel @Inject constructor(
             .addOnFailureListener {
                 viewModelScope.launch {
                     _login.emit(Resources.Error(it.localizedMessage!!))
+                }
+            }
+    }
+
+    fun resetPassword(email: String) {
+        viewModelScope.launch {
+            _resetPassword.emit(Resources.Loading())
+        }
+
+        firebaseAuth.sendPasswordResetEmail(email)
+            .addOnCompleteListener{
+                viewModelScope.launch {
+                    _resetPassword.emit(Resources.Success(email))
+                }
+            }
+            .addOnFailureListener {
+                viewModelScope.launch {
+                    _resetPassword.emit(Resources.Error(it.localizedMessage!!))
                 }
             }
     }
