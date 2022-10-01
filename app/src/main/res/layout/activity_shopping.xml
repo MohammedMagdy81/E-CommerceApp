@@ -4,6 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.ShoppingActivity">
+    tools:context=".activities.ShoppingActivity">
+
+
+    <fragment
+        android:id="@+id/shoppingHostFragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/shopping_nav_graph"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="4dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationMenu"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationMenu"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:labelVisibilityMode="auto"
+        app:itemTextColor="@color/g_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation_menu"
+        android:elevation="0dp"
+        app:itemPaddingTop="8dp"
+        android:background="@drawable/bottom_nav_bg"
+        app:itemRippleColor="@color/g_white"
+        app:itemIconTint="@drawable/bottom_nav_icon_bg"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

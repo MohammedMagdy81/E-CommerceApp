@@ -1,4 +1,4 @@
-package com.example.e_commerce.fragments
+package com.example.e_commerce.fragments.login_register
 
 import android.content.Intent
 import android.os.Bundle
@@ -17,9 +17,7 @@ import com.example.e_commerce.dialog.setUpDialogSheet
 import com.example.e_commerce.mvvm.LoginViewModel
 import com.example.e_commerce.utils.Resources
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {

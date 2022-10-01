@@ -73,7 +73,10 @@ dependencies {
     implementation "io.github.vejei.viewpagerindicator:viewpagerindicator:1.0.0-alpha.1"
 
     // android ktx
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.1'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.2'
+
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
+
 
     // stepview
     implementation 'com.shuhart.stepview:stepview:1.5.1'
