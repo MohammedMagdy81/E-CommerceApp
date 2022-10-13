@@ -1,5 +1,6 @@
 package com.example.e_commerce.fragments.login_register
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.e_commerce.R
+import com.example.e_commerce.activities.ShoppingActivity
 import com.example.e_commerce.data.User
 import com.example.e_commerce.databinding.FragmentRegisterBinding
 import com.example.e_commerce.mvvm.RegisterViewModel
@@ -48,6 +50,7 @@ class RegisterFragment : Fragment() {
                 )
                 val password = registerEditTextPassword.text.toString()
                 viewModel.createAccountWithEmailAndPassword(user, password)
+                goToHome()
 
             }
 
@@ -61,6 +64,13 @@ class RegisterFragment : Fragment() {
         observeToData()
         observeToRegisterValidation()
 
+    }
+
+    private fun goToHome() {
+        Intent(requireActivity(), ShoppingActivity::class.java).also { intent ->
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
     }
 
     private fun observeToRegisterValidation() {
