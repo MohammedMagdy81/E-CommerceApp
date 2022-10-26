@@ -9,6 +9,7 @@
         <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/drawable/facebook_login.xml" value="0.1365" />
         <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/drawable/google_login.xml" value="0.1365" />
         <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/drawable/ic_background.xml" value="0.1515" />
+        <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/drawable/ic_favorite.xml" value="0.158" />
         <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/drawable/ic_kleine_shape.xml" value="0.1365" />
         <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/drawable/ic_microphone.xml" value="0.10400000000000001" />
         <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/drawable/ic_scan.xml" value="0.1515" />
@@ -20,6 +21,8 @@
         <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/layout/activity_login_register.xml" value="0.176" />
         <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/layout/activity_shopping.xml" value="0.2" />
+        <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/layout/beat_deal_rv_item.xml" value="0.4" />
+        <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/layout/best_deal_rv_item.xml" value="0.25" />
         <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/layout/fragment_account_option.xml" value="0.2" />
         <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/layout/fragment_account_options.xml" value="0.2" />
         <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/layout/fragment_cart.xml" value="0.72" />
@@ -31,6 +34,8 @@
         <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/layout/fragment_register.xml" value="0.2" />
         <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/layout/fragment_search.xml" value="0.25" />
         <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/layout/item_reset_password.xml" value="0.24895833333333334" />
+        <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/layout/product_rv_item.xml" value="0.20512820512820512" />
+        <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/layout/special_rv_item.xml" value="0.264" />
         <entry key="..\:/Users/Eslam Majde/AndroidStudioProjects/ECommerce/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.24895833333333334" />
       </map>
     </option>
