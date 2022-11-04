@@ -36,6 +36,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             AccessoryFragment(),
             FurnitureFragment()
         )
+        binding.homeViewPager.isUserInputEnabled=false
+
         homeViewPagerAdapter =
             HomeViewPagerAdapter(categoriesFragment, childFragmentManager, lifecycle)
         binding.homeViewPager.adapter = homeViewPagerAdapter

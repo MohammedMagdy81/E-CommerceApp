@@ -12,7 +12,6 @@ import com.example.e_commerce.databinding.BestDealRvItemBinding
 class BestDealsAdapter : RecyclerView.Adapter<BestDealsAdapter.BestDealViewHolder>() {
 
 
-
     private val diffCallback = object : DiffUtil.ItemCallback<Product>() {
         override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
             return oldItem.id == newItem.id
@@ -32,21 +31,22 @@ class BestDealsAdapter : RecyclerView.Adapter<BestDealsAdapter.BestDealViewHolde
     class BestDealViewHolder(val binding: BestDealRvItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) {
-
             binding.apply {
                 Glide.with(imgBestDeal).load(product.images[0]).into(imgBestDeal)
                 tvDealProductName.text = product.name
-                tvOldPrice.text = product.price.toString() + " EG"
+                product.offerPercentage?.let {
+                    val remainingPrice = 1f - it
+                    val newPrice = remainingPrice * product.price
+                    tvNewPrice.text = "$ ${newPrice}"
+                }
+                tvOldPrice.text = "$ ${product.price}"
 
-                val result1 = product.offerPercentage?.times(product.price) ?: 0f
-                val result2 = product.price - result1
-
-                tvNewPrice.text = result2.toString() + " EG"
             }
         }
 
 
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BestDealViewHolder {
         return BestDealViewHolder(
             BestDealRvItemBinding.inflate(

@@ -1,6 +1,8 @@
 package com.example.e_commerce.adapters
 
+import android.graphics.Paint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -8,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.e_commerce.data.Product
 import com.example.e_commerce.databinding.ProductRvItemBinding
+import kotlinx.coroutines.flow.DEFAULT_CONCURRENCY
 
 class BestProductAdapter : RecyclerView.Adapter<BestProductAdapter.BestProductViewHolder>() {
 
@@ -29,12 +32,19 @@ class BestProductAdapter : RecyclerView.Adapter<BestProductAdapter.BestProductVi
         RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) {
             binding.apply {
+                Glide.with(imgProduct).load(product.images[0]).into(imgProduct)
                 tvName.text = product.name
-                tvPrice.text = product.price.toString() + "EG"
-                val result1 = product.offerPercentage?.times(product.price) ?: 0f
-                val result2 = product.price - result1
-                tvNewPrice.text = result2.toString()
-                Glide.with(itemView).load(product.images[0]).into(imgProduct)
+                product.offerPercentage?.let {
+                    val remainingPrice = 1f - it
+                    val newPrice = remainingPrice * product.price
+                    tvNewPrice.text = "$ ${newPrice}"
+                    tvPrice.paintFlags=Paint.STRIKE_THRU_TEXT_FLAG
+                }
+                if (product.offerPercentage==null){
+                    tvNewPrice.visibility= View.INVISIBLE
+                }
+                tvPrice.text = "$ ${product.price}"
+
 
             }
 

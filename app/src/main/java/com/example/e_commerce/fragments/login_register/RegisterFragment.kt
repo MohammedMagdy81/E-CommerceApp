@@ -80,7 +80,7 @@ class RegisterFragment : Fragment() {
                     withContext(Dispatchers.Main) {
                         binding.registerEditTextEmail.apply {
                             requestFocus()
-                            error=it.email.message
+                            error = it.email.message
                         }
                     }
                 }
@@ -89,7 +89,7 @@ class RegisterFragment : Fragment() {
                     withContext(Dispatchers.Main) {
                         binding.registerEditTextPassword.apply {
                             requestFocus()
-                            error=it.password.message
+                            error = it.password.message
                         }
                     }
                 }
@@ -107,10 +107,10 @@ class RegisterFragment : Fragment() {
                         loadingState()
                     }
                     is Resources.Success -> {
-                       successState()
+                        successState()
                     }
                     is Resources.Error -> {
-                       errorState(it)
+                        errorState(it)
                     }
                 }
             }
