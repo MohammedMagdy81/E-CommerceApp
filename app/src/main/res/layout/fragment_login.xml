@@ -4,11 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/blury_background" />
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -65,7 +61,7 @@
                 android:layout_marginTop="15dp"
                 android:letterSpacing=".02"
                 android:text="@string/register_here"
-                android:textColor="@color/purple_500"
+                android:textColor="@color/g_red"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@id/loginGuidelineright"

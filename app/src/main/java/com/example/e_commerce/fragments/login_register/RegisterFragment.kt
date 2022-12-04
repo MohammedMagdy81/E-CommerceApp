@@ -42,7 +42,6 @@ class RegisterFragment : Fragment() {
 
         binding.apply {
             registerBtnRegister.setOnClickListener {
-
                 val user = User(
                     registerEditTextFirstName.text.toString().trim(),
                     registerEditTextLastName.text.toString().trim(),
@@ -51,19 +50,14 @@ class RegisterFragment : Fragment() {
                 val password = registerEditTextPassword.text.toString()
                 viewModel.createAccountWithEmailAndPassword(user, password)
                 goToHome()
-
             }
 
             registerTextLogin.setOnClickListener {
                 findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
             }
         }
-
-
-
         observeToData()
         observeToRegisterValidation()
-
     }
 
     private fun goToHome() {

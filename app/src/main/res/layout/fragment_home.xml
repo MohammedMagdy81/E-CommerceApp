@@ -84,7 +84,7 @@
         android:id="@+id/homeTabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabSelectedTextColor="@color/g_blue"
+        app:tabSelectedTextColor="@color/g_red"
         android:layout_marginHorizontal="10dp"
         android:padding="8dp"
         app:tabRippleColor="@color/g_white"

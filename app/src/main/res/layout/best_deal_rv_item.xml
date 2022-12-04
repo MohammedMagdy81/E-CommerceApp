@@ -64,7 +64,7 @@
             android:layout_width="83dp"
             android:layout_height="28dp"
            android:layout_marginEnd="6dp"
-            android:background="@drawable/blue_background"
+            android:background="@drawable/red_background"
             android:fontFamily="@font/poppins_light"
             android:text="See product"
             android:textAllCaps="false"

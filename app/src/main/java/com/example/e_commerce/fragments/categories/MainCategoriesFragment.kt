@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -96,27 +97,31 @@ class MainCategoriesFragment : Fragment(R.layout.fragment_main_categories) {
                 mainCategoryViewModel.bestProductState.collectLatest {
                     when (it) {
                         is Resources.Error -> {
-                            hideLoading()
+
                             Toast.makeText(
                                 requireContext(),
                                 it.message.toString(),
                                 Toast.LENGTH_LONG
                             ).show()
+                            binding.loadMoreProgressbar.visibility = View.GONE
                         }
                         is Resources.Loading -> {
-                            showLoading()
+                            binding.loadMoreProgressbar.visibility = View.VISIBLE
                         }
                         is Resources.Success -> {
                             bestProductAdapter.differ.submitList(it.data)
-                            hideLoading()
+                            binding.loadMoreProgressbar.visibility = View.GONE
                         }
                     }
                 }
             }
-
-
         }
 
+        binding.nestedScrollLayout.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, _, scrollY, _, _ ->
+            if (v.getChildAt(0).bottom <= v.height + scrollY) {
+                mainCategoryViewModel.fetchBestProduct()
+            }
+        })
 
     }
 

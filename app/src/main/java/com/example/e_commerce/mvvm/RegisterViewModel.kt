@@ -34,12 +34,11 @@ class RegisterViewModel @Inject constructor
             runBlocking {
                 _register.emit(Resources.Loading())
             }
-
             firebaseAuth.createUserWithEmailAndPassword(user.email, password)
                 .addOnSuccessListener {
                     it.user.let { firebaseUser ->
                         saveUserToDatabase(firebaseUser!!.uid, user)
-                        // _register.value = Resources.Success(firebaseUser)
+                         _register.value = Resources.Success(user)
                     }
                 }
                 .addOnFailureListener {
