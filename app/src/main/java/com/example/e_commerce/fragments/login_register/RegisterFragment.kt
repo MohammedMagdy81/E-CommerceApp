@@ -49,7 +49,6 @@ class RegisterFragment : Fragment() {
                 )
                 val password = registerEditTextPassword.text.toString()
                 viewModel.createAccountWithEmailAndPassword(user, password)
-                goToHome()
             }
 
             registerTextLogin.setOnClickListener {
@@ -119,6 +118,7 @@ class RegisterFragment : Fragment() {
     private fun successState() {
         Toast.makeText(context, "Success", Toast.LENGTH_LONG).show()
         binding.registerBtnRegister.revertAnimation()
+        goToHome()
     }
 
     private fun loadingState() {
