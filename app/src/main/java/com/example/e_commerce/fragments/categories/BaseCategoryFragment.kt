@@ -4,18 +4,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.e_commerce.R
 import com.example.e_commerce.adapters.BestProductAdapter
 import com.example.e_commerce.databinding.FragmentBaseCategoryBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 open class BaseCategoryFragment : Fragment(R.layout.fragment_base_category) {
 
     private lateinit var binding: FragmentBaseCategoryBinding
-    private lateinit var offerAdapter: BestProductAdapter
-    private lateinit var bestProductAdapter: BestProductAdapter
+    protected val offerAdapter: BestProductAdapter by lazy {
+        BestProductAdapter()
+    }
+    protected val bestProductAdapter: BestProductAdapter by lazy {
+        BestProductAdapter()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,8 +40,24 @@ open class BaseCategoryFragment : Fragment(R.layout.fragment_base_category) {
         setupBestProductRV()
     }
 
+    fun showOfferProgress() {
+        binding.offerProgressbar.visibility = View.VISIBLE
+    }
+
+    fun hideOfferProgress() {
+        binding.offerProgressbar.visibility = View.GONE
+    }
+
+    fun showBestProductsProgress() {
+        binding.bestProductsProgressbar.visibility = View.VISIBLE
+    }
+
+    fun hideBestProductsProgress() {
+        binding.bestProductsProgressbar.visibility = View.GONE
+    }
+
+
     private fun setupBestProductRV() {
-        bestProductAdapter = BestProductAdapter()
         binding.baseCategoryBestProductRv.apply {
             layoutManager =
                 GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
@@ -43,7 +67,6 @@ open class BaseCategoryFragment : Fragment(R.layout.fragment_base_category) {
     }
 
     private fun setupOfferRV() {
-        offerAdapter = BestProductAdapter()
         binding.baseCategoryHorizontalRv.apply {
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)

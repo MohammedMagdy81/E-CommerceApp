@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.e_commerce.R
 import com.example.e_commerce.adapters.HomeViewPagerAdapter
 import com.example.e_commerce.databinding.FragmentHomeBinding
@@ -30,9 +29,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         val categoriesFragment = arrayListOf<Fragment>(
             MainCategoriesFragment(),
-            ChairFragment(),
-            CupboardFragment(),
-            TableFragment(),
+            SportsFragment(),
+            ShoesFragment(),
+            ClothesFragment(),
             AccessoryFragment(),
             FurnitureFragment()
         )

@@ -10,6 +10,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <ProgressBar
+            android:id="@+id/offerProgressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/g_red"
+            app:layout_constraintBottom_toBottomOf="@id/baseCategoryHorizontalRv"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/baseCategoryHorizontalRv"
             android:layout_width="match_parent"
@@ -39,9 +50,19 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="15dp"
             android:overScrollMode="never"
-           app:layout_constraintTop_toBottomOf="@id/baseCategorytvBestProduct"
-            app:layout_constraintStart_toStartOf="@id/baseCategorytvBestProduct"/>
+            app:layout_constraintStart_toStartOf="@id/baseCategorytvBestProduct"
+            app:layout_constraintTop_toBottomOf="@id/baseCategorytvBestProduct" />
 
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/baseCategoryBestProductRv"
+            android:indeterminateTint="@color/g_red"
+            android:visibility="gone"
+            android:id="@+id/bestProductsProgressbar"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

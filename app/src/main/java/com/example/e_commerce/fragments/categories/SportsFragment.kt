@@ -11,17 +11,14 @@ import com.example.e_commerce.utils.Resources
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class FurnitureFragment : BaseCategoryFragment() {
-
-
+class SportsFragment : BaseCategoryFragment() {
     @Inject
     lateinit var firestore: FirebaseFirestore
     private val viewModel by viewModels<CategoryViewModel> {
-        BaseCategoryViewModelFactory(firestore, Category.Furniture)
+        BaseCategoryViewModelFactory(firestore, Category.Sports)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
