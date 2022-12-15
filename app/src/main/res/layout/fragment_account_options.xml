@@ -51,7 +51,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/account_option_btn_register"
-            style="@style/blueButtonStyle"
+            style="@style/redButtonStyle"
             android:layout_width="@dimen/mediumButtonWidth"
             android:layout_height="@dimen/smallButtonHeight"
             android:text="@string/register"
