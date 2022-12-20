@@ -29,13 +29,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         val categoriesFragment = arrayListOf<Fragment>(
             MainCategoriesFragment(),
-            SportsFragment(),
-            ShoesFragment(),
             ClothesFragment(),
+            ShoesFragment(),
+            SportsFragment(),
             AccessoryFragment(),
             FurnitureFragment()
         )
-        binding.homeViewPager.isUserInputEnabled=false
+        binding.homeViewPager.isUserInputEnabled = false
 
         homeViewPagerAdapter =
             HomeViewPagerAdapter(categoriesFragment, childFragmentManager, lifecycle)

@@ -11,10 +11,11 @@ import com.example.e_commerce.utils.Resources
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ShoesFragment:BaseCategoryFragment() {
+class ShoesFragment : BaseCategoryFragment() {
 
     @Inject
     lateinit var firestore: FirebaseFirestore
@@ -25,43 +26,53 @@ class ShoesFragment:BaseCategoryFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         lifecycleScope.launchWhenStarted {
-            viewModel.offerState.collect {
-                when (it) {
-                    is Resources.Error -> {
-                        Snackbar.make(requireView(), it.message.toString(), Snackbar.LENGTH_LONG)
-                            .show()
-                        hideOfferProgress()
+            launch {
+                viewModel.offerState.collect {
+                    when (it) {
+                        is Resources.Error -> {
+                            Snackbar.make(
+                                requireView(),
+                                it.message.toString(),
+                                Snackbar.LENGTH_LONG
+                            )
+                                .show()
+                            hideOfferProgress()
+                        }
+                        is Resources.Loading -> {
+                            showOfferProgress()
+                        }
+                        is Resources.Success -> {
+                            offerAdapter.differ.submitList(it.data)
+                            hideOfferProgress()
+                        }
+                        else -> Unit
                     }
-                    is Resources.Loading -> {
-                        showOfferProgress()
+                }
+            }
+            launch {
+                viewModel.bestProductState.collect {
+                    when (it) {
+                        is Resources.Error -> {
+                            Snackbar.make(
+                                requireView(),
+                                it.message.toString(),
+                                Snackbar.LENGTH_LONG
+                            )
+                                .show()
+                            hideBestProductsProgress()
+                        }
+                        is Resources.Loading -> {
+                            showBestProductsProgress()
+                        }
+                        is Resources.Success -> {
+                            bestProductAdapter.differ.submitList(it.data)
+                            hideBestProductsProgress()
+                        }
+                        else -> Unit
                     }
-                    is Resources.Success -> {
-                        offerAdapter.differ.submitList(it.data)
-                        hideOfferProgress()
-                    }
-                    else -> Unit
                 }
             }
 
-        }
-        lifecycleScope.launchWhenStarted {
-            viewModel.bestProductState.collect {
-                when (it) {
-                    is Resources.Error -> {
-                        Snackbar.make(requireView(), it.message.toString(), Snackbar.LENGTH_LONG)
-                            .show()
-                        hideBestProductsProgress()
-                    }
-                    is Resources.Loading -> {
-                        showBestProductsProgress()
-                    }
-                    is Resources.Success -> {
-                        bestProductAdapter.differ.submitList(it.data)
-                        hideBestProductsProgress()
-                    }
-                    else -> Unit
-                }
-            }
 
         }
 
