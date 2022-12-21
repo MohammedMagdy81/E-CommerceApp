@@ -11,6 +11,7 @@ import com.example.e_commerce.utils.Resources
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -45,7 +46,7 @@ class SportsFragment : BaseCategoryFragment() {
                 }
             }
             launch {
-                viewModel.bestProductState.collect {
+                viewModel.bestProductState.collectLatest {
                     when (it) {
                         is Resources.Error -> {
                             Snackbar.make(requireView(), it.message.toString(), Snackbar.LENGTH_LONG)
