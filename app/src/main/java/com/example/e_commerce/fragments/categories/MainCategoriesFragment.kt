@@ -9,6 +9,7 @@ import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_commerce.R
@@ -16,8 +17,10 @@ import com.example.e_commerce.adapters.BestDealsAdapter
 import com.example.e_commerce.adapters.BestProductAdapter
 import com.example.e_commerce.adapters.SpecialProductAdapter
 import com.example.e_commerce.databinding.FragmentMainCategoriesBinding
+import com.example.e_commerce.fragments.shopping.HomeFragmentDirections
 import com.example.e_commerce.mvvm.MainCategoryViewModel
 import com.example.e_commerce.utils.Resources
+import com.example.e_commerce.utils.showBottomNavigation
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -29,6 +32,7 @@ class MainCategoriesFragment : Fragment(R.layout.fragment_main_categories) {
     private lateinit var specialProductAdapter: SpecialProductAdapter
     private lateinit var bestDealsAdapter: BestDealsAdapter
     private lateinit var bestProductAdapter: BestProductAdapter
+
 
     private val mainCategoryViewModel by viewModels<MainCategoryViewModel>()
 
@@ -44,6 +48,20 @@ class MainCategoriesFragment : Fragment(R.layout.fragment_main_categories) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpRV()
+
+        specialProductAdapter.onClick = {
+            val direction = HomeFragmentDirections.actionHomeFragmentToProductDetailsFragment(it)
+            findNavController().navigate(direction)
+        }
+        bestDealsAdapter.onClick = {
+            val direction = HomeFragmentDirections.actionHomeFragmentToProductDetailsFragment(it)
+            findNavController().navigate(direction)
+        }
+        bestProductAdapter.onClick = {
+            val direction = HomeFragmentDirections.actionHomeFragmentToProductDetailsFragment(it)
+            findNavController().navigate(direction)
+        }
+
 
         lifecycleScope.launchWhenStarted {
             launch {
@@ -156,6 +174,11 @@ class MainCategoriesFragment : Fragment(R.layout.fragment_main_categories) {
                 GridLayoutManager(requireContext(), 2)
             adapter = bestProductAdapter
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showBottomNavigation()
     }
 }
 

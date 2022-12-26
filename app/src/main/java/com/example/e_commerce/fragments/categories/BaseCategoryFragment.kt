@@ -6,12 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.e_commerce.R
 import com.example.e_commerce.adapters.BestProductAdapter
 import com.example.e_commerce.databinding.FragmentBaseCategoryBinding
+import com.example.e_commerce.fragments.shopping.HomeFragmentDirections
+import com.example.e_commerce.utils.showBottomNavigation
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,6 +27,7 @@ open class BaseCategoryFragment : Fragment(R.layout.fragment_base_category) {
     protected val bestProductAdapter: BestProductAdapter by lazy {
         BestProductAdapter()
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,6 +42,14 @@ open class BaseCategoryFragment : Fragment(R.layout.fragment_base_category) {
         super.onViewCreated(view, savedInstanceState)
         setupOfferRV()
         setupBestProductRV()
+        bestProductAdapter.onClick = {
+            val direction = HomeFragmentDirections.actionHomeFragmentToProductDetailsFragment(it)
+            findNavController().navigate(direction)
+        }
+        offerAdapter.onClick = {
+            val direction = HomeFragmentDirections.actionHomeFragmentToProductDetailsFragment(it)
+            findNavController().navigate(direction)
+        }
     }
 
     fun showOfferProgress() {
@@ -73,6 +85,11 @@ open class BaseCategoryFragment : Fragment(R.layout.fragment_base_category) {
             adapter = offerAdapter
             setHasFixedSize(true)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showBottomNavigation()
     }
 }
 

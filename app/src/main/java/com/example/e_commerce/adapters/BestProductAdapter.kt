@@ -26,6 +26,8 @@ class BestProductAdapter : RecyclerView.Adapter<BestProductAdapter.BestProductVi
 
     }
 
+    var onClick:((Product)->Unit)?=null
+
     val differ = AsyncListDiffer(this, diffCallback)
 
     class BestProductViewHolder(val binding: ProductRvItemBinding) :
@@ -61,7 +63,11 @@ class BestProductAdapter : RecyclerView.Adapter<BestProductAdapter.BestProductVi
     }
 
     override fun onBindViewHolder(holder: BestProductViewHolder, position: Int) {
-        holder.bind(differ.currentList.get(position))
+        val product = differ.currentList.get(position)
+        holder.bind(product)
+        holder.itemView.setOnClickListener {
+            onClick?.invoke(product)
+        }
     }
 
     override fun getItemCount(): Int {

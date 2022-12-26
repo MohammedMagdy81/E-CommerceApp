@@ -21,7 +21,7 @@ class SizesAdapter : RecyclerView.Adapter<SizesAdapter.SizesViewHolder>() {
         }
 
     }
-    private val differList = AsyncListDiffer(this, diffUtil)
+     val differList = AsyncListDiffer(this, diffUtil)
 
     inner class SizesViewHolder(val binding: SizesItemRvBinding) :
         RecyclerView.ViewHolder(binding.root) {
