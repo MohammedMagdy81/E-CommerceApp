@@ -6,21 +6,33 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.e_commerce.R
 import com.example.e_commerce.adapters.BestProductAdapter
+import com.example.e_commerce.data.Category
 import com.example.e_commerce.databinding.FragmentBaseCategoryBinding
 import com.example.e_commerce.fragments.shopping.HomeFragmentDirections
+import com.example.e_commerce.mvvm.CategoryViewModel
+import com.example.e_commerce.mvvm.factory.BaseCategoryViewModelFactory
+import com.example.e_commerce.utils.Resources
 import com.example.e_commerce.utils.showBottomNavigation
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 open class BaseCategoryFragment : Fragment(R.layout.fragment_base_category) {
 
     private lateinit var binding: FragmentBaseCategoryBinding
+
+
     protected val offerAdapter: BestProductAdapter by lazy {
         BestProductAdapter()
     }
@@ -42,6 +54,7 @@ open class BaseCategoryFragment : Fragment(R.layout.fragment_base_category) {
         super.onViewCreated(view, savedInstanceState)
         setupOfferRV()
         setupBestProductRV()
+
         bestProductAdapter.onClick = {
             val direction = HomeFragmentDirections.actionHomeFragmentToProductDetailsFragment(it)
             findNavController().navigate(direction)

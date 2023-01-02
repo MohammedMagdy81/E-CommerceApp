@@ -33,7 +33,7 @@ class IntroductionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+/*
         lifecycleScope.launchWhenStarted {
             viewModel.navigateState.collect { state ->
                 when (state) {
@@ -50,7 +50,7 @@ class IntroductionFragment : Fragment() {
                     }
                 }
             }
-        }
+        }*/
 
         binding.introductionBtnStart.setOnClickListener {
             viewModel.setUpButtonClick()

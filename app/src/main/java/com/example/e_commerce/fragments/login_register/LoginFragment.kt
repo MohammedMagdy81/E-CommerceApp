@@ -18,6 +18,7 @@ import com.example.e_commerce.mvvm.LoginViewModel
 import com.example.e_commerce.utils.Resources
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import es.dmoral.toasty.Toasty
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
@@ -64,10 +65,20 @@ class LoginFragment : Fragment() {
 
                     }
                     is Resources.Success->{
-                    Snackbar.make(requireView(),"Password Reset Link Send Successfully",Snackbar.LENGTH_LONG).show()
+                        Toasty.success(
+                            requireContext(),
+                            " Login Successfully ..",
+                            Toast.LENGTH_LONG,
+                            true
+                        ).show()
                     }
                     is Resources.Error->{
-                        Snackbar.make(requireView(),"Error :${it.message}",Snackbar.LENGTH_LONG).show()
+                        Toasty.error(
+                            requireContext(),
+                            it.message.toString(),
+                            Toast.LENGTH_LONG,
+                            true
+                        ).show()
                     }
                 }
             }

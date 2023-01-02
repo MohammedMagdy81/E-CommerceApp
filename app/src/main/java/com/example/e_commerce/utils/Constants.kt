@@ -12,4 +12,6 @@ object Constants {
     const val BEST_CATEGORY_VALUE="Best Product"
     const val CATEGORY_FIELD="category"
 
+    const val CART_COLLECTION="cart"
+
    }

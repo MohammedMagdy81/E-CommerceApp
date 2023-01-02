@@ -18,6 +18,7 @@ import com.example.e_commerce.mvvm.RegisterViewModel
 import com.example.e_commerce.utils.RegisterValidation
 import com.example.e_commerce.utils.Resources
 import dagger.hilt.android.AndroidEntryPoint
+import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -111,13 +112,23 @@ class RegisterFragment : Fragment() {
     }
 
     private fun errorState(it: Resources.Error<User>) {
-        Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
+        Toasty.success(
+            requireContext(),
+            it.message.toString(),
+            Toast.LENGTH_LONG,
+            true
+        ).show()
         binding.registerBtnRegister.revertAnimation()
     }
 
     private fun successState() {
-        Toast.makeText(context, "Success", Toast.LENGTH_LONG).show()
         binding.registerBtnRegister.revertAnimation()
+        Toasty.success(
+            requireContext(),
+            " Register Completed Successfully ..",
+            Toast.LENGTH_LONG,
+            true
+        ).show()
         goToHome()
     }
 

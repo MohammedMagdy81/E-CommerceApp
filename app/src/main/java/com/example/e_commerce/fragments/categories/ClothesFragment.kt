@@ -18,6 +18,7 @@ import javax.inject.Inject
 class ClothesFragment : BaseCategoryFragment() {
     @Inject
     lateinit var firestore: FirebaseFirestore
+
     private val viewModel by viewModels<CategoryViewModel> {
         BaseCategoryViewModelFactory(firestore, Category.Clothes)
     }

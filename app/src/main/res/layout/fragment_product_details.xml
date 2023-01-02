@@ -11,29 +11,43 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <androidx.cardview.widget.CardView
             android:id="@+id/product_detail_card"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="20dp"
             app:cardCornerRadius="15dp"
-            app:cardElevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent=".51"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#14969899"
+            app:layout_constraintWidth_percent=".8"
+            app:layout_constraintHeight_percent=".50"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/productDetailPagerImages"
+            <com.smarteist.autoimageslider.SliderView
+                android:id="@+id/slider"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#0C222222" />
+                app:sliderAnimationDuration="600"
+                app:sliderAutoCycleDirection="back_and_forth"
+                app:sliderIndicatorAnimationDuration="700"
+                app:sliderIndicatorEnabled="true"
+                app:sliderIndicatorGravity="center_horizontal|bottom"
+                app:sliderIndicatorOrientation="horizontal"
+                app:sliderIndicatorPadding="6dp"
+                app:sliderIndicatorRadius="4dp"
+                app:sliderIndicatorSelectedColor="@color/g_red"
+                app:sliderIndicatorUnselectedColor="@color/g_gray500"
+                app:sliderScrollTimeInSec="1" />
 
             <ImageView
                 android:id="@+id/productDetailsCloseIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="12dp"
+                app:tint="@color/g_red"
                 android:src="@drawable/ic_baseline_close_24" />
         </androidx.cardview.widget.CardView>
 
