@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Homeify</string>
+    <string name="introduction_header_text">The Right Address\n For Shopping\n Any Day</string>
+    <string name="introduction_body_text">it\'s very easy to reach the best \n quality among the products</string>
+    <string name="start">البدء</string>
+    <string name="homify">Homify</string>
+    <string name="register">تسجيل حساب جديد </string>
+    <string name="login">تسجيل الدخول </string>
+    <string name="let_s_login">هيا نسجل</string>
+    <string name="don_t_have_account">ليس لديك حساب ؟</string>
+    <string name="e_mail">الإيميل</string>
+    <string name="password">كلمة السر</string>
+    <string name="forget_password">هل نسيت كلمة السر ؟</string>
+    <string name="facebook">الفيس بوك</string>
+    <string name="gmail">حساب جوجل</string>
+    <string name="let_s_register">هيا بنا نسجل </string>
+    <string name="are_u_have_account">هل لديك حساب ؟</string>
+    <string name="first_name">الاسم الأول</string>
+    <string name="last_name">الاسم الأخير</string>
+    <string name="reset_password">تغيير كلمة السر</string>
+    <string name="reset_password_link_will_sent_for_you">رابط تغيير كلمة السر سيتم إرساله لهذا الإيميل..</string>
+    <string name="cancel">إلغاء</string>
+    <string name="confirm">تأكيد</string>
+
+    <string name="home">الرئيسية</string>
+    <string name="search">بحث</string>
+    <string name="cart">سلة المشتريات</string>
+    <string name="profile">الصفحة الشخصية</string>
+
+    <string name="search_now">ابحث الان</string>
+    <string name="hometxt">الرئيسية</string>
+    <string name="sports">الرياضة</string>
+    <string name="furniture">الأثاث المنزلي</string>
+    <string name="shoes">الأحذية</string>
+    <string name="accessories">الأكسسوارات</string>
+
+</resources>
