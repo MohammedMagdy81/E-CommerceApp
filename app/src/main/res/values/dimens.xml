@@ -6,4 +6,9 @@
     <dimen name="buttonCorners">8dp</dimen>
     <dimen name="mediumButtonWidth">200dp</dimen>
     <dimen name="editextHeight">60dp</dimen>
+    <dimen name="marginTop32">32dp</dimen>
+    <dimen name="marginTop16">16dp</dimen>
+    <dimen name="margin24">24dp</dimen>
+    <dimen name="margin8">8dp</dimen>
+    <dimen name="margin12">12dp</dimen>
 </resources>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="64dp"
+        >
+        <ImageView
+            android:id="@+id/accountOptionIcon"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/icon_shopping"
+            />
+        <TextView
+            style="@style/h3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/homify"
+            android:layout_marginStart="@dimen/marginTop16"
+            />
+    </LinearLayout>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/accountOptionGuideLine1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".2" />
+
+    <TextView
+        android:id="@+id/accountOptionTextHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:letterSpacing=".05"
+        android:lineSpacingExtra="10dp"
+        android:text="@string/introduction_header_text"
+        android:textColor="@color/black"
+        android:textSize="@dimen/h4TextSize"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accountOptionGuideLine1" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/accountOptionGuideLine2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".7" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/accountOptionBtnRegister"
+        style="@style/redButtonStyle"
+        android:layout_width="@dimen/mediumButtonWidth"
+        android:layout_height="wrap_content"
+        android:text="@string/register"
+        android:textSize="@dimen/TextSize24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/accountOptionGuideLine2" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/accountOptionBtnLogin"
+        android:layout_width="@dimen/mediumButtonWidth"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop16"
+        style="@style/whiteButtonStyle"
+        android:text="@string/login"
+        android:textSize="@dimen/TextSize24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/accountOptionBtnRegister" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

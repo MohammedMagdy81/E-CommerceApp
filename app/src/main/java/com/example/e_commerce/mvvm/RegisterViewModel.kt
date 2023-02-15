@@ -1,79 +1,86 @@
 package com.example.e_commerce.mvvm
 
-import android.widget.RemoteViewsService
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.e_commerce.data.User
 import com.example.e_commerce.utils.*
+import com.example.e_commerce.utils.Constants.USER_COLLECTION
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 @HiltViewModel
-class RegisterViewModel @Inject constructor
-    (
+class RegisterViewModel @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
     private val database: FirebaseFirestore
 ) : ViewModel() {
 
-    private val _register = MutableStateFlow<Resources<User>>(Resources.Ideal())
-    val register: Flow<Resources<User>> = _register
+    private val _registerState = MutableStateFlow<Resources<User>>(Resources.Ideal())
+    val registerState: StateFlow<Resources<User>> = _registerState.asStateFlow()
 
-    private val _registerChannel = Channel<RegisterFailedState>()
-    val registerChannel = _registerChannel.receiveAsFlow()
+    private val _validation = Channel<RegisterFieldsState>()
+    val validation = _validation.receiveAsFlow()
 
-    fun createAccountWithEmailAndPassword(user: User, password: String) {
+    fun registerUser(user: User, password: String) {
         if (checkValidation(user, password)) {
             runBlocking {
-                _register.emit(Resources.Loading())
+                _registerState.emit(Resources.Loading())
             }
             firebaseAuth.createUserWithEmailAndPassword(user.email, password)
-                .addOnSuccessListener {
-                    it.user.let { firebaseUser ->
-                        saveUserToDatabase(firebaseUser!!.uid, user)
-                         _register.value = Resources.Success(user)
+                .addOnSuccessListener { authResult ->
+                    authResult.user?.let { firebaseUser ->
+                        viewModelScope.launch {
+                            saveUserInfo(firebaseUser.uid, user)
+                        }
                     }
                 }
                 .addOnFailureListener {
-                    _register.value = Resources.Error(it.localizedMessage!!)
+                    viewModelScope.launch {
+                        _registerState.emit(Resources.Error(it.message))
+                    }
                 }
         } else {
-            val registerFailedState = RegisterFailedState(
-                validateEmail(user.email),
-                validatePassword(password)
-            )
-            runBlocking {
-                _registerChannel.send(registerFailedState)
+
+            val registerFieldState =
+                RegisterFieldsState(validateEmail(user.email), validatePassword(password))
+            viewModelScope.launch {
+                _validation.send(registerFieldState)
             }
         }
     }
 
-    private fun saveUserToDatabase(uid: String, user: User) {
-        database.collection(Constants.USERS_COLLECTIONS)
+    private fun saveUserInfo(uid: String, user: User) {
+        database.collection(USER_COLLECTION)
             .document(uid)
             .set(user)
             .addOnSuccessListener {
-                _register.value = Resources.Success(user)
+                viewModelScope.launch {
+                    _registerState.emit(Resources.Success(user))
+                }
             }
             .addOnFailureListener {
-                _register.value = Resources.Error(it.localizedMessage!!)
+                viewModelScope.launch {
+                    _registerState.emit(Resources.Error(it.message))
+                }
             }
-
     }
+
 
     private fun checkValidation(user: User, password: String): Boolean {
-        val emailValidate = validateEmail(user.email)
-        val passwordValidate = validatePassword(password)
-
-        val shouldRegister = emailValidate is RegisterValidation.Success &&
-                passwordValidate is RegisterValidation.Success
+        val validateEmail = validateEmail(user.email)
+        val validatePassword = validatePassword(password)
+        val shouldRegister = validateEmail is RegisterValidation.Success
+                && validatePassword is RegisterValidation.Success
         return shouldRegister
     }
+
 }

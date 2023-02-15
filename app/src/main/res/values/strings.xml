@@ -1,31 +1,39 @@
 <resources>
     <string name="app_name">Homeify</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="the_right_address_n_for_shopping_n_anyday">The Right Address \n For Shopping\n Anyday</string>
-    <string name="tv_quality">it\'s now very easy to reach \n the best quality among the \n products on the internet</string>
+    <string name="introduction_header_text">The Right Address\n For Shopping\n Any Day</string>
+    <string name="introduction_body_text">it\'s very easy to reach the best \n quality among the products</string>
     <string name="start">Start</string>
+    <string name="homify">Homify</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
     <string name="let_s_login">Let\'s Login</string>
-    <string name="don_t_have_an_account">Don\'t Have An Account ?</string>
-    <string name="register_here">Register Here</string>
-    <string name="e_mail_hint">E-mail</string>
+    <string name="don_t_have_account">Don\'t have account ?</string>
+    <string name="e_mail">E-mail</string>
     <string name="password">Password</string>
     <string name="forget_password">Forget Password ?</string>
     <string name="facebook">Facebook</string>
     <string name="gmail">Gmail</string>
     <string name="let_s_register">Let\'s Register</string>
+    <string name="are_u_have_account">Are U Have Account ?</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
-    <string name="do_you_have_account">Do You have Account ?</string>
     <string name="reset_password">Reset Password</string>
-    <string name="we_will_send_link_to_you_to_reset_password">We Will Send Link to You to Reset Password</string>
+    <string name="reset_password_link_will_sent_for_you">Reset Password link Will sent for you ..</string>
     <string name="cancel">Cancel</string>
-    <string name="reset">Reset</string>
-    <string name="colors">Colors</string>
-    <string name="size">Size</string>
-    <string name="add_to_cart">Add to cart</string>
-    <string name="my_cart">My Cart</string>
-
+    <string name="confirm">Confirm</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="cart">Cart</string>
+    <string name="profile">Profile</string>
+    <string name="search_now">Search Now</string>
+    <string name="hometxt">Home</string>
+    <string name="sports">Sports</string>
+    <string name="furniture">Furniture</string>
+    <string name="shoes">Shoes</string>
+    <string name="accessories">Accessories</string>
+    <string name="best_deals">Best Deals</string>
+    <string name="best_products">Best Products</string>
 </resources>

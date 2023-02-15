@@ -1,17 +1,12 @@
 package com.example.e_commerce.utils
 
-import com.example.e_commerce.R
-
 object Constants {
-    const val USERS_COLLECTIONS="users"
-    const val INTRODUCTION_SHARED_PREF_NAME="introduction_shred_pref"
 
-    const val IS_BUTTON_CLICK_KEY="isButtonClicked"
+    const val USER_COLLECTION="users"
+    const val INTRODUCTION_PREF="introductionSharedPref"
 
-    const val PRODUCTS_COLLECTION="Products"
-    const val BEST_CATEGORY_VALUE="Best Product"
-    const val CATEGORY_FIELD="category"
+    const val  INTRODUCTION_KEY="isButtonClick"
 
-    const val CART_COLLECTION="cart"
-
-   }
+    const val NAVIGATE_TO_SHOPPING=23
+    const val NAVIGATE_TO_ACCOUNT_OPTION=24
+}

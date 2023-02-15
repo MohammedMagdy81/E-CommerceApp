@@ -5,5 +5,5 @@ import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class MyApp :Application(){
+class MyApp : Application() {
 }

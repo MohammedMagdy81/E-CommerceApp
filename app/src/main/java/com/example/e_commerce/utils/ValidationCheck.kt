@@ -2,18 +2,21 @@ package com.example.e_commerce.utils
 
 import android.util.Patterns
 
+
+// بهندل فيها نجاح الايميل بس
 fun validateEmail(email: String): RegisterValidation {
     if (email.isEmpty())
-        return RegisterValidation.Failed("Email Can't be Empty !")
+        return RegisterValidation.Field("الايميل لا يمكن أن يكون فارغا!")
     if (!Patterns.EMAIL_ADDRESS.matcher(email).matches())
-        return RegisterValidation.Failed("Wrong Email Format !")
+        return RegisterValidation.Field("صيغة الايميل غير صحيحة !")
     return RegisterValidation.Success
-
 }
 
+// بهندل فيها نجاح الباسوورد بس
 fun validatePassword(password: String): RegisterValidation {
-    if (password.isEmpty() || password.length < 6)
-        return RegisterValidation.Failed("Password Should be 6 Char At least !")
+    if (password.isEmpty())
+        return RegisterValidation.Field("كلمة السر لا يمكن أن تكون فارغة !")
+    if (password.length < 6)
+        return RegisterValidation.Field("كلمة السر لا يمكن أن تكون أقل من 6 حروف !")
     return RegisterValidation.Success
-
 }
