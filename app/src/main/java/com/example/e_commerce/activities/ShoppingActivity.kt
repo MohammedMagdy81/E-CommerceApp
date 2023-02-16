@@ -17,10 +17,9 @@ class ShoppingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityShoppingBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val navController = findNavController(R.id.shoppingNavHost)
+        binding.bottomNavigationMenu.setupWithNavController(navController )
 
-        val navController =findNavController(R.id.shoppingNavHost)
-        val bottomSheet = binding.bottomNavigationMenu
-        bottomSheet.setupWithNavController(navController)
 
     }
 }
