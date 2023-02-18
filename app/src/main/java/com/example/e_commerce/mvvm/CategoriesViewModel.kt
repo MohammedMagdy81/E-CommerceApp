@@ -31,7 +31,7 @@ class CategoriesViewModel constructor(
     }
 
     fun getOfferProducts() {
-        viewModelScope.launch {
+        runBlocking {
             _offerProducts.emit(Resources.Loading())
         }
         firestore.collection(PRODUCTS_COLLECTION).whereEqualTo(CATEGORY, category.category)
@@ -51,7 +51,7 @@ class CategoriesViewModel constructor(
     }
 
     fun getBestProducts() {
-        viewModelScope.launch {
+        runBlocking {
             _bestProducts.emit(Resources.Loading())
         }
         firestore.collection(PRODUCTS_COLLECTION)

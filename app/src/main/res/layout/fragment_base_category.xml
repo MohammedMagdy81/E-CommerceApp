@@ -14,18 +14,17 @@
 
         <com.github.ybq.android.spinkit.SpinKitView
             android:id="@+id/baseCategorySpinkit"
+            style="@style/SpinKitView.Large.Circle"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:visibility="visible"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHeight_percent=".3"
-            style="@style/SpinKitView.Large.Wave"
-            android:backgroundTint="@color/orange_color"
             app:layout_constraintWidth_percent=".3"
-            />
+            app:layout_constraintHeight_percent=".3"
+            android:layout_gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:SpinKit_Color="@color/orange_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvOffer"

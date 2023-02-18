@@ -60,5 +60,10 @@ class BestDealProductsAdapter :
 
     override fun onBindViewHolder(holder: BestDealProductsViewHolder, position: Int) {
         holder.bind(differ.currentList[position])
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(differ.currentList[position])
+        }
     }
+
+    var onItemClick: ((Product) -> Unit)? = null
 }

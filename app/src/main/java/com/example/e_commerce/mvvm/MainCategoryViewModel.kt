@@ -65,7 +65,8 @@ class MainCategoryViewModel @Inject constructor(
         runBlocking {
             _bestDealProducts.emit(Resources.Loading())
         }
-        firestore.collection(PRODUCTS_COLLECTION).whereEqualTo(CATEGORY, BEST_DEAL)
+        firestore.collection(PRODUCTS_COLLECTION)
+            .whereEqualTo(CATEGORY, BEST_DEAL)
             .get()
             .addOnSuccessListener {
                 val products = it.toObjects(Product::class.java)
@@ -87,7 +88,6 @@ class MainCategoryViewModel @Inject constructor(
             firestore.collection(PRODUCTS_COLLECTION)
                 .limit(pagingInfo.page * 6)
                 .whereEqualTo(CATEGORY, BEST_PRODUCTS)
-                .orderBy(ID, Query.Direction.DESCENDING)
                 .get()
                 .addOnSuccessListener {
                     val products = it.toObjects(Product::class.java)

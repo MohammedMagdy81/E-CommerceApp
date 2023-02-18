@@ -37,4 +37,7 @@
     <string name="best_deals">Best Deals</string>
     <string name="best_products">Best Products</string>
     <string name="tab_home">Home</string>
+    <string name="colors">Colors</string>
+    <string name="sizes">Sizes</string>
+    <string name="add_to_cart">Add to cart</string>
 </resources>

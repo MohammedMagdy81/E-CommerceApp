@@ -9,14 +9,18 @@ import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.e_commerce.R
 import com.example.e_commerce.adapters.BestDealProductsAdapter
 import com.example.e_commerce.adapters.BestProductsAdapter
 import com.example.e_commerce.adapters.SpecialProductsAdapter
 import com.example.e_commerce.databinding.FragmentMainCategoryBinding
+import com.example.e_commerce.fragments.shopping.HomeFragmentDirections
 import com.example.e_commerce.mvvm.MainCategoryViewModel
 import com.example.e_commerce.utils.Resources
+import com.example.e_commerce.utils.showBottomNav
 import dagger.hilt.android.AndroidEntryPoint
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.flow.collectLatest
@@ -45,7 +49,8 @@ class MainCategoryFragment : Fragment() {
         setUpBestDealProductsAdapter()
         setupBestProductAdapter()
         observeToSpecialProducts()
-        observeToSpecialProducts()
+
+        initClickOnProduct()
 
         binding.mainCategoryNestedScroll.setOnScrollChangeListener(
             NestedScrollView.OnScrollChangeListener { v, _, scrollY, _, _ ->
@@ -54,6 +59,21 @@ class MainCategoryFragment : Fragment() {
                 }
 
             })
+    }
+
+    private fun initClickOnProduct() {
+        specialProductAdapter.onItemClick = {
+            val action = HomeFragmentDirections.actionHomeFragmentToProductDetailFragment(it)
+            findNavController().navigate(action)
+        }
+        bestDealProductsAdapter.onItemClick = {
+            val action = HomeFragmentDirections.actionHomeFragmentToProductDetailFragment(it)
+            findNavController().navigate(action)
+        }
+        bestProductsAdapter.onItemClick = {
+            val action = HomeFragmentDirections.actionHomeFragmentToProductDetailFragment(it)
+            findNavController().navigate(action)
+        }
     }
 
     private fun setUpBestDealProductsAdapter() {
@@ -81,7 +101,7 @@ class MainCategoryFragment : Fragment() {
                     is Resources.Error -> {
                         binding.mainCategorySpinKit.visibility = View.GONE
                         Toasty.error(
-                            requireContext(), "Special Products not Available!",
+                            requireContext(), "حدث خطأ ربما انقطع الاتصال بالانترنت !",
                             Toast.LENGTH_LONG
                         ).show()
                     }
@@ -102,7 +122,7 @@ class MainCategoryFragment : Fragment() {
                     is Resources.Error -> {
                         binding.mainCategorySpinKit.visibility = View.GONE
                         Toasty.error(
-                            requireContext(), "Best Deal not Available!",
+                            requireContext(), "عفوا لقد حدث خطأ !",
                             Toast.LENGTH_LONG
                         ).show()
                     }
@@ -123,7 +143,7 @@ class MainCategoryFragment : Fragment() {
                     is Resources.Error -> {
                         binding.mainCategorySpinKit.visibility = View.GONE
                         Toasty.error(
-                            requireContext(), "Best Products not Available!",
+                            requireContext(), "حدث خطأ تأكد من الاتصال بالنترنت !",
                             Toast.LENGTH_LONG
                         ).show()
                         binding.bestProductProgress.visibility = View.GONE
@@ -152,4 +172,8 @@ class MainCategoryFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        showBottomNav()
+    }
 }

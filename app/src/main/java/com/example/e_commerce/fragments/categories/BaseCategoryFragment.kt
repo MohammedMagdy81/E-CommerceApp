@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,29 +17,31 @@ import com.example.e_commerce.R
 import com.example.e_commerce.adapters.BestProductsAdapter
 import com.example.e_commerce.data.Category
 import com.example.e_commerce.databinding.FragmentBaseCategoryBinding
+import com.example.e_commerce.fragments.shopping.HomeFragmentDirections
 import com.example.e_commerce.mvvm.CategoriesViewModel
 import com.example.e_commerce.mvvm.factory.BaseCategoryViewModelFactory
 import com.example.e_commerce.utils.Resources
+import com.example.e_commerce.utils.showBottomNav
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
 import es.dmoral.toasty.Toasty
+import kotlinx.coroutines.flow.collectLatest
 import javax.inject.Inject
 
 
-open class BaseCategoryFragment(private val category: Category)
- : Fragment() {
+open class BaseCategoryFragment(private val category: Category) : Fragment() {
 
     private lateinit var binding: FragmentBaseCategoryBinding
+
     protected val offerAdapter by lazy { BestProductsAdapter() }
     protected val bestProductsAdapter by lazy { BestProductsAdapter() }
 
 
-
     @Inject
-    lateinit var firestore :FirebaseFirestore
+    lateinit var firestore: FirebaseFirestore
 
     val viewModel by viewModels<CategoriesViewModel> {
-        BaseCategoryViewModelFactory(firestore,category )
+        BaseCategoryViewModelFactory(firestore, category)
     }
 
 
@@ -59,10 +62,12 @@ open class BaseCategoryFragment(private val category: Category)
         observeToOfferState()
         observeToBestProductsState()
 
+        initClickListener()
+
         binding.rvOffer.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 if (!recyclerView.canScrollHorizontally(1) && dx != 0) {
-                    onPagingOfferRequest()
+
                 }
             }
         })
@@ -70,19 +75,31 @@ open class BaseCategoryFragment(private val category: Category)
         binding.baseCategoryScroll.setOnScrollChangeListener(
             NestedScrollView.OnScrollChangeListener { v, _, scrollY, _, _ ->
                 if (v.getChildAt(0).bottom <= v.height + scrollY) {
-                    onPagingBestProductRequest()
+
                 }
 
             })
     }
 
+    private fun initClickListener() {
+        bestProductsAdapter.onItemClick = {
+            val action = HomeFragmentDirections.actionHomeFragmentToProductDetailFragment(it)
+            findNavController().navigate(action)
+        }
+        offerAdapter.onItemClick = {
+            val action = HomeFragmentDirections.actionHomeFragmentToProductDetailFragment(it)
+            findNavController().navigate(action)
+        }
+    }
+
     private fun observeToBestProductsState() {
         lifecycleScope.launchWhenStarted {
-            viewModel.bestProducts.collect {
+            viewModel.bestProducts.collectLatest {
                 when (it) {
                     is Resources.Error -> {
                         binding.baseCategorySpinkit.visibility = View.GONE
-                        Toasty.error(requireContext(), "error happen !", Toast.LENGTH_LONG).show()
+                        Toasty.error(requireContext(), it.message.toString(), Toast.LENGTH_LONG)
+                            .show()
                     }
                     is Resources.Loading -> {
                         binding.baseCategorySpinkit.visibility = View.VISIBLE
@@ -99,11 +116,12 @@ open class BaseCategoryFragment(private val category: Category)
 
     private fun observeToOfferState() {
         lifecycleScope.launchWhenStarted {
-            viewModel.offerProducts.collect {
+            viewModel.offerProducts.collectLatest {
                 when (it) {
                     is Resources.Error -> {
                         binding.baseCategorySpinkit.visibility = View.GONE
-                        Toasty.error(requireContext(), "error happen !", Toast.LENGTH_LONG).show()
+                        Toasty.error(requireContext(), it.message.toString(), Toast.LENGTH_LONG)
+                            .show()
                     }
                     is Resources.Loading -> {
                         binding.baseCategorySpinkit.visibility = View.VISIBLE
@@ -117,9 +135,6 @@ open class BaseCategoryFragment(private val category: Category)
             }
         }
     }
-
-    open fun onPagingOfferRequest() {}
-    open fun onPagingBestProductRequest() {}
 
     private fun setupOfferRv() {
         binding.apply {
@@ -135,6 +150,11 @@ open class BaseCategoryFragment(private val category: Category)
                 GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
             rvBestProducts.adapter = bestProductsAdapter
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showBottomNav()
     }
 
 }

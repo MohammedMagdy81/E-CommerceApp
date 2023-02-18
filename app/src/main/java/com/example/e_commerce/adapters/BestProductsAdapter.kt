@@ -57,5 +57,10 @@ class BestProductsAdapter : RecyclerView.Adapter<BestProductsAdapter.BestProduct
 
     override fun onBindViewHolder(holder: BestProductsViewHolder, position: Int) {
         holder.bind(differ.currentList[position])
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(differ.currentList[position])
+        }
     }
+
+    var onItemClick: ((Product) -> Unit)? = null
 }
