@@ -40,4 +40,8 @@
     <string name="colors">Colors</string>
     <string name="sizes">Sizes</string>
     <string name="add_to_cart">Add to cart</string>
+    <string name="my_cart">My Cart</string>
+    <string name="total">Total</string>
+    <string name="checkout">Checkout</string>
+    <string name="your_cart_is_empty">Your Cart is Empty !</string>
 </resources>
