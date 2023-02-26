@@ -7,10 +7,9 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageShadow"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:visibility="invisible"
-        android:src="#2D0091EA"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@color/orange_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

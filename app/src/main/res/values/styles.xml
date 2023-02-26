@@ -59,6 +59,18 @@
         <item name="android:windowSoftInputMode">adjustResize</item>
     </style>
 
+    <style name="AddressEditTxt">
+
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:background">@color/g_white</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:layout_marginStart">6dp</item>
+        <item name="android:layout_marginEnd">6dp</item>
+
+    </style>
+
 
     <dimen name="h4TextSize">36sp</dimen>
     <dimen name="h2TextSize">17sp</dimen>

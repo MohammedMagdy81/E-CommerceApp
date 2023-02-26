@@ -43,5 +43,20 @@
     <string name="my_cart">My Cart</string>
     <string name="total">Total</string>
     <string name="checkout">Checkout</string>
-    <string name="your_cart_is_empty">Your Cart is Empty !</string>
+    <string name="your_cart_is_empty">your shopping cart is empty !</string>
+    <string name="see_product">See product</string>
+    <string name="address">Address</string>
+    <string name="full_name">Full Name</string>
+    <string name="location">Location:</string>
+    <string name="street">Street</string>
+    <string name="phone">Phone</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="delete">Delete</string>
+    <string name="save">Save</string>
+    <string name="billing">Billing</string>
+    <string name="payment_method">Payment Method</string>
+    <string name="billing_payment_desc">My App does not support real payment method .. please pay when you receive your order</string>
+    <string name="shopping_address">Shopping Address</string>
+    <string name="place_order">Place Order</string>
 </resources>

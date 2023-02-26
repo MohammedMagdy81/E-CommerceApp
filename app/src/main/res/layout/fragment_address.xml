@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ProgressBar
+        android:id="@+id/addressProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addressBtnDelete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:indeterminateTint="@color/orange_color"
+        android:visibility="gone"
+
+        />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/addressGuideLineLeft"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".08" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/addressGuideLineRight"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".92" />
+
+    <LinearLayout
+        android:id="@+id/addressLayoutHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@color/g_white"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintEnd_toEndOf="@id/addressGuideLineRight"
+        app:layout_constraintStart_toStartOf="@id/addressGuideLineLeft"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/addressCloseIc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_close_24"
+            app:tint="@color/black" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_light"
+            android:gravity="center_horizontal"
+            android:text="@string/address"
+            android:textColor="@color/black"
+            android:textSize="26sp" />
+
+    </LinearLayout>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toStartOf="@id/addressGuideLineLeft"
+        app:layout_constraintEnd_toEndOf="@id/addressGuideLineRight"
+        app:layout_constraintTop_toBottomOf="@id/addressLayoutHeader"
+        android:background="@color/g_gray500"
+        android:layout_marginHorizontal="@dimen/margin12"
+        app:layout_constraintBottom_toTopOf="@id/addressLocationEt"
+        />
+
+    <EditText
+        android:id="@+id/addressLocationEt"
+        style="@style/AddressEditTxt"
+        android:layout_marginTop="@dimen/marginTop32"
+        android:hint="@string/location"
+        app:layout_constraintEnd_toEndOf="@id/addressGuideLineRight"
+        app:layout_constraintStart_toStartOf="@id/addressGuideLineLeft"
+        app:layout_constraintTop_toBottomOf="@id/addressLayoutHeader" />
+
+    <EditText
+        android:id="@+id/addressFullNameEt"
+        style="@style/AddressEditTxt"
+        android:hint="@string/full_name"
+        app:layout_constraintEnd_toEndOf="@id/addressGuideLineRight"
+        app:layout_constraintStart_toStartOf="@id/addressGuideLineLeft"
+        app:layout_constraintTop_toBottomOf="@id/addressLocationEt" />
+
+    <EditText
+        android:id="@+id/addressStreetEt"
+        style="@style/AddressEditTxt"
+        android:hint="@string/street"
+        app:layout_constraintEnd_toEndOf="@id/addressGuideLineRight"
+        app:layout_constraintStart_toStartOf="@id/addressGuideLineLeft"
+        app:layout_constraintTop_toBottomOf="@id/addressFullNameEt" />
+
+    <EditText
+        android:id="@+id/addressPhoneEt"
+        style="@style/AddressEditTxt"
+        android:hint="@string/phone"
+        app:layout_constraintEnd_toEndOf="@id/addressGuideLineRight"
+        app:layout_constraintStart_toStartOf="@id/addressGuideLineLeft"
+        app:layout_constraintTop_toBottomOf="@id/addressStreetEt" />
+
+    <LinearLayout
+        android:id="@+id/addressLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintEnd_toEndOf="@id/addressGuideLineRight"
+        app:layout_constraintStart_toStartOf="@id/addressGuideLineLeft"
+        app:layout_constraintTop_toBottomOf="@id/addressPhoneEt">
+
+        <EditText
+            android:id="@+id/addressCityEt"
+            style="@style/AddressEditTxt"
+            android:layout_weight="1"
+            android:hint="@string/city" />
+
+        <EditText
+            android:id="@+id/addressStateEt"
+            style="@style/AddressEditTxt"
+            android:layout_weight="1"
+            android:hint="@string/state" />
+
+
+    </LinearLayout>
+
+    <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+        android:id="@+id/addressBtnDelete"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="32dp"
+        android:background="@color/g_white"
+        android:text="@string/delete"
+        app:spinning_bar_color="@color/orange_color"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="@id/addressGuideLineLeft"
+        app:layout_constraintTop_toBottomOf="@id/addressLayout"
+        app:layout_constraintWidth_percent=".35" />
+
+    <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+        android:id="@+id/addressBtnSave"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@color/orange_color"
+        android:text="@string/save"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        app:spinning_bar_color="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/addressGuideLineRight"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintTop_toBottomOf="@id/addressLayout"
+        app:layout_constraintWidth_percent=".35" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
+

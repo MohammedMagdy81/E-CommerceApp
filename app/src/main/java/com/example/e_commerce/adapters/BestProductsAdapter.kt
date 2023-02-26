@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.e_commerce.data.Product
 import com.example.e_commerce.databinding.LayoutProductItemBinding
+import com.example.e_commerce.utils.getProductPrice
 
 class BestProductsAdapter : RecyclerView.Adapter<BestProductsAdapter.BestProductsViewHolder>() {
 
@@ -19,12 +20,13 @@ class BestProductsAdapter : RecyclerView.Adapter<BestProductsAdapter.BestProduct
             binding.apply {
                 Glide.with(itemView).load(product.images.first()).into(imgProduct)
                 tvName.text = product.name
-                product.offerPercentage?.let {
-                    val remainingPercentage = 1f - it
-                    val priceAfterDiscount = remainingPercentage * product.price
-                    tvNewPrice.text = "$ ${String.format("%.2f", priceAfterDiscount)}"
+                val priceAfterDiscount = product.offerPercentage.getProductPrice(product.price)
+                tvNewPrice.text = "$ ${String.format("%.2f", priceAfterDiscount)}"
+                if (product.offerPercentage!=null){
                     tvPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
                 }
+
+
                 if (product.offerPercentage == null)
                     tvNewPrice.visibility = View.GONE
                 tvPrice.text = "$ ${product.price}"

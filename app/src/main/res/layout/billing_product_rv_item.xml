@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    app:cardBackgroundColor="@color/g_white"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/billingImageProduct"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:scaleType="fitXY"
+            android:src="@color/g_gray500"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/billingProductName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@id/billingImageProduct"
+            app:layout_constraintTop_toTopOf="@id/billingImageProduct"
+            tools:text="ProductName" />
+
+        <TextView
+            android:id="@+id/billingProductPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:textColor="@color/g_gray700"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/billingImageProduct"
+            app:layout_constraintTop_toBottomOf="@id/billingProductName"
+            tools:text="$ 1200" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/billingProductSelectColor"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="6dp"
+            android:src="@color/g_gray700"
+            app:layout_constraintStart_toEndOf="@id/billingImageProduct"
+            app:layout_constraintTop_toBottomOf="@id/billingProductPrice" />
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/billingProductSelectSize"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="6dp"
+            android:src="#52969899"
+            app:layout_constraintStart_toEndOf="@id/billingProductSelectColor"
+            app:layout_constraintTop_toBottomOf="@id/billingProductPrice" />
+
+
+        <TextView
+            android:id="@+id/billingSelectSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/billingProductSelectSize"
+            app:layout_constraintEnd_toEndOf="@+id/billingProductSelectSize"
+            app:layout_constraintStart_toStartOf="@+id/billingProductSelectSize"
+            app:layout_constraintTop_toTopOf="@+id/billingProductSelectSize"
+            tools:text="L" />
+
+        <TextView
+            android:id="@+id/billingProductQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/orange_color"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
