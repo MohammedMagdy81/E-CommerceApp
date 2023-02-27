@@ -59,4 +59,6 @@
     <string name="billing_payment_desc">My App does not support real payment method .. please pay when you receive your order</string>
     <string name="shopping_address">Shopping Address</string>
     <string name="place_order">Place Order</string>
+    <string name="my_profile">My Profile</string>
+    <string name="my_orders">My Orders</string>
 </resources>

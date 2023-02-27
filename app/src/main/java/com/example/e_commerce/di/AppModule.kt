@@ -6,6 +6,7 @@ import com.example.e_commerce.firebase.FirebaseCommon
 import com.example.e_commerce.utils.Constants.INTRODUCTION_PREF
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,6 +23,10 @@ object AppModule {
 
     @Provides
     @Singleton
+    fun provideStorage() = FirebaseStorage.getInstance().reference
+
+    @Provides
+    @Singleton
     fun provideFirestore() = FirebaseFirestore.getInstance()
 
     @Provides
@@ -33,3 +38,12 @@ object AppModule {
     fun provideFirebaseCommon(firestore: FirebaseFirestore, auth: FirebaseAuth) =
         FirebaseCommon(firestore, auth)
 }
+
+
+
+
+
+
+
+
+
