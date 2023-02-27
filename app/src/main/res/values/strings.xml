@@ -61,4 +61,5 @@
     <string name="place_order">Place Order</string>
     <string name="my_profile">My Profile</string>
     <string name="my_orders">My Orders</string>
+    <string name="products">Products</string>
 </resources>

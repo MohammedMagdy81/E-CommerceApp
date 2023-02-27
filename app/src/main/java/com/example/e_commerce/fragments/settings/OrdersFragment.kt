@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_commerce.R
 import com.example.e_commerce.adapters.OrdersAdapter
@@ -40,6 +41,11 @@ class OrdersFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupOrdersRv()
         collectOrdersState()
+        ordersAdapter.onOrderClick = {
+            val action = OrdersFragmentDirections.actionOrdersFragmentToOrdersDetailsFragment(it)
+            findNavController().navigate(action)
+        }
+
     }
 
     private fun collectOrdersState() {
