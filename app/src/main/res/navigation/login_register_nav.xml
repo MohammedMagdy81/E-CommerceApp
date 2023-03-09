@@ -12,9 +12,7 @@
         tools:layout="@layout/fragment_introduction" >
         <action
             android:id="@+id/action_introductionFragment_to_accountOptionFragment"
-            app:destination="@id/accountOptionFragment"
-            app:enterAnim="@anim/to_left"
-            app:exitAnim="@anim/to_right" />
+            app:destination="@id/accountOptionFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"

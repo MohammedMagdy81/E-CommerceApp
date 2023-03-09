@@ -52,6 +52,7 @@ class SizesAdapter : RecyclerView.Adapter<SizesAdapter.SizesViewHolder>() {
             if (selectedPosition >= 0)
                 notifyItemChanged(selectedPosition)
             selectedPosition = holder.adapterPosition
+            notifyItemChanged(selectedPosition)
             onItemClick?.invoke(diffList.currentList[position])
         }
     }

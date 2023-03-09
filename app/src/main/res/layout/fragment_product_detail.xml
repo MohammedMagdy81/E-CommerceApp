@@ -164,6 +164,7 @@
             android:layout_marginHorizontal="@dimen/marginTop32"
             app:layout_constraintTop_toBottomOf="@id/linearLayout"
             android:padding="4dp"
+            app:spinning_bar_color="@color/white"
             android:text="@string/add_to_cart"
             style="@style/redButtonStyle"
             />

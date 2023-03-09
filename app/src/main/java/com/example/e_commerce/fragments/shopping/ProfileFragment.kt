@@ -18,6 +18,7 @@ import com.example.e_commerce.data.User
 import com.example.e_commerce.databinding.FragmentProfileBinding
 import com.example.e_commerce.mvvm.ProfileViewModel
 import com.example.e_commerce.utils.Resources
+import com.example.e_commerce.utils.hideBottomNav
 import com.example.e_commerce.utils.showBottomNav
 import dagger.hilt.android.AndroidEntryPoint
 import es.dmoral.toasty.Toasty
@@ -42,9 +43,11 @@ class ProfileFragment : Fragment() {
         binding.apply {
             constraintProfile.setOnClickListener {
                 findNavController().navigate(R.id.action_profileFragment_to_userAccountFragment)
+                hideBottomNav()
             }
             linearOrders.setOnClickListener {
                 findNavController().navigate(R.id.action_profileFragment_to_ordersFragment)
+                hideBottomNav()
             }
             linearBilling.setOnClickListener {
                 val action = ProfileFragmentDirections.actionProfileFragmentToBillingFragment(
@@ -52,15 +55,19 @@ class ProfileFragment : Fragment() {
                     emptyArray()
                 )
                 findNavController().navigate(action)
+                hideBottomNav()
             }
             linearOut.setOnClickListener {
+
+                binding.profileSpinKit.visibility=View.VISIBLE
+                
                 viewModel.logout()
                 val intent = Intent(requireActivity(), LoginRegisterActivity::class.java)
                 startActivity(intent)
                 requireActivity().finish()
 
             }
-            tvVersionCode.text = "Mohamed Magdy - Version ${BuildConfig.VERSION_CODE}"
+            tvVersionCode.text = "\n- Mohamed Magdy - \n\n\tVersion ${BuildConfig.VERSION_CODE}"
         }
         collectState()
     }

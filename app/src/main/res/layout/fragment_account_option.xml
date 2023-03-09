@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -46,7 +47,7 @@
         android:lineSpacingExtra="10dp"
         android:text="@string/introduction_header_text"
         android:textColor="@color/black"
-        android:textSize="@dimen/h4TextSize"
+        android:textSize="@dimen/h3TextSize"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +67,7 @@
         android:layout_width="@dimen/mediumButtonWidth"
         android:layout_height="wrap_content"
         android:text="@string/register"
-        android:textSize="@dimen/TextSize24"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/accountOptionGuideLine2" />
@@ -78,7 +79,7 @@
         android:layout_marginTop="@dimen/marginTop16"
         style="@style/whiteButtonStyle"
         android:text="@string/login"
-        android:textSize="@dimen/TextSize24"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/accountOptionBtnRegister" />

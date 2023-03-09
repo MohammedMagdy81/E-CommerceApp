@@ -49,8 +49,8 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/img_user"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:background="@drawable/profile_img_background"
                     android:src="@drawable/ic_person"
                     app:layout_constraintStart_toStartOf="parent"

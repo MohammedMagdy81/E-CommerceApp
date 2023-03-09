@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:padding="4dp"
-
+        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
         app:tabRippleColor="@color/orange_color"
         app:tabIndicatorColor="@color/orange_color"
         app:tabSelectedTextColor="@color/orange_color"

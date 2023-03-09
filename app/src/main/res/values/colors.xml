@@ -22,9 +22,9 @@
     <color name="g_blue100">#B8D9FA</color>
     <color name="g_red">#FF0000</color>
     <color name="g_gray500">#969899</color>
-    <color name="g_orange_yellow">#F8BA00</color>
-    <color name="orange_color">#B2FF6D00</color>
-    <color name="light_orange_color">#57FF6D00</color>
+    <color name="g_orange_yellow">#C1F43677</color>
+    <color name="orange_color">#F43677</color>
+    <color name="light_orange_color">#68F43677</color>
 
     <color name="g_text_hint">#969899</color>
     <color name="g_orange">#F8BA00</color>

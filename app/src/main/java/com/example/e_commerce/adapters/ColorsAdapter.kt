@@ -60,6 +60,7 @@ class ColorsAdapter : RecyclerView.Adapter<ColorsAdapter.ColorsVwHolder>() {
         holder.itemView.setOnClickListener {
             if (selectedPosition >= 0)
                 notifyItemChanged(selectedPosition)
+
             selectedPosition = holder.adapterPosition
             notifyItemChanged(selectedPosition)
 

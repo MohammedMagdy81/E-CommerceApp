@@ -79,10 +79,10 @@
             android:layout_marginTop="32dp"
             android:src="@color/black"
             app:layout_constraintEnd_toEndOf="@id/profileGuideLineRight"
-            app:layout_constraintHeight_percent=".15"
+            app:layout_constraintHeight_percent=".2"
             app:layout_constraintStart_toStartOf="@id/profileGuideLineLeft"
             app:layout_constraintTop_toBottomOf="@id/profileToolbar"
-            app:layout_constraintWidth_percent=".3" />
+            app:layout_constraintWidth_percent=".4" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profileImageEdit"
