@@ -47,8 +47,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/billingProductSelectColor"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_marginStart="6dp"
             android:layout_marginTop="6dp"
             android:src="@color/g_gray700"
@@ -58,8 +58,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/billingProductSelectSize"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_marginStart="6dp"
             android:layout_marginTop="6dp"
             android:src="#52969899"
@@ -84,6 +84,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/orange_color"
             android:textStyle="bold"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             tools:text="2" />

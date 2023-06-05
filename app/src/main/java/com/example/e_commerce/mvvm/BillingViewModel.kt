@@ -26,6 +26,7 @@ class BillingViewModel @Inject constructor(
         getUserAddresses()
     }
 
+
     private fun getUserAddresses() {
         viewModelScope.launch {
             _address.emit(Resources.Loading())

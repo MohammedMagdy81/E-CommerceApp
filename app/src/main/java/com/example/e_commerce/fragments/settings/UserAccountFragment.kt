@@ -97,7 +97,7 @@ class UserAccountFragment : Fragment() {
                     }
                     is Resources.Success -> {
                         binding.profileBtnSave.revertAnimation()
-                        findNavController().navigateUp()
+                        findNavController().popBackStack()
                     }
                     else -> Unit
                 }
@@ -110,7 +110,6 @@ class UserAccountFragment : Fragment() {
             viewModel.user.collectLatest {
                 when (it) {
                     is Resources.Error -> {
-
                         Toasty.error(requireContext(), it.message.toString(), Toast.LENGTH_LONG)
                             .show()
                     }
@@ -131,7 +130,7 @@ class UserAccountFragment : Fragment() {
     private fun showUserInformation(user: User) {
         binding.apply {
             Glide.with(this@UserAccountFragment).load(user.imagePath)
-                .error(R.drawable.ic_person)
+                .error(ColorDrawable(Color.BLACK))
                 .into(profileImageUser)
             profileFirstNameEt.setText(user.firstName)
             profileLastNameEt.setText(user.lastName)

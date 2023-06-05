@@ -14,7 +14,7 @@ class ViewPagerProductDetailAdapter :
     inner class ViewPagerProductDetailHolder(val binding: ImageProductDetailItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(url: String) {
-            Glide.with(itemView).load(url).into(binding.imageProductDetail)
+            Glide.with(itemView).load(url).centerInside().into(binding.imageProductDetail)
         }
     }
 

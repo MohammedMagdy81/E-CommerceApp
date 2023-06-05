@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="5dp"
     android:backgroundTint="#1E969899"
     android:padding="6dp"
@@ -12,16 +12,17 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="4dp">
 
         <ImageView
             android:id="@+id/cart_item_image"
             android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_height="100dp"
             android:layout_marginStart="12dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
-            android:scaleType="fitXY"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -34,11 +35,11 @@
             android:layout_marginStart="6dp"
             android:ellipsize="end"
             android:maxLines="1"
-            tools:text="Chair"
-            android:textColor="@color/g_red"
+            android:textColor="#248DFB"
             android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@id/cart_item_image"
-            app:layout_constraintTop_toTopOf="@id/cart_item_image" />
+            app:layout_constraintTop_toTopOf="@id/cart_item_image"
+            tools:text="Chair" />
 
         <TextView
             android:id="@+id/cart_item_price"
@@ -49,41 +50,35 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="$ 44"
-            android:textColor="@color/g_gray700"
+            android:textStyle="bold"
+            android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@id/cart_item_name"
             app:layout_constraintTop_toBottomOf="@id/cart_item_name" />
 
-        <TextView
+        <ImageView
             android:id="@+id/cart_item_plus"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
             android:layout_margin="12dp"
-            android:text="+"
-            android:textColor="@color/white"
-            android:background="@drawable/plus_minus_shape"
-            android:textSize="16sp"
-            android:textAlignment="center"
+            android:src="@drawable/ic_plus"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <TextView
+        <ImageView
             android:id="@+id/cart_item_minus"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
             android:layout_margin="12dp"
-            android:text="-"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:background="@drawable/plus_minus_shape"
-            android:textSize="16sp"
+            android:src="@drawable/minus_"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/cart_item_selected_color"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:layout_marginTop="6dp"
             android:src="@color/g_gray700"
             app:layout_constraintStart_toStartOf="@id/cart_item_price"
@@ -92,42 +87,39 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/cart_item_selected_size"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="6dp"
             android:layout_marginTop="6dp"
             android:src="#52969899"
-            android:layout_marginStart="6dp"
-           app:layout_constraintStart_toEndOf="@id/cart_item_selected_color"
-            app:layout_constraintTop_toBottomOf="@id/cart_item_price"
-            />
+            app:layout_constraintStart_toEndOf="@id/cart_item_selected_color"
+            app:layout_constraintTop_toBottomOf="@id/cart_item_price" />
 
         <TextView
             android:id="@+id/tvCartProductSize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
-            tools:text="L"
             android:textColor="@color/black"
-            android:padding="6dp"
+            android:textSize="14sp"
+            android:gravity="center"
             app:layout_constraintBottom_toBottomOf="@+id/cart_item_selected_size"
             app:layout_constraintEnd_toEndOf="@+id/cart_item_selected_size"
             app:layout_constraintStart_toStartOf="@+id/cart_item_selected_size"
             app:layout_constraintTop_toTopOf="@+id/cart_item_selected_size"
-            />
+            tools:text="L" />
 
         <TextView
             android:id="@+id/cart_item_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/cart_item_minus"
+            android:textColor="@color/g_red"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/cart_item_plus"
             app:layout_constraintEnd_toEndOf="@id/cart_item_plus"
-            tools:text="2"
             app:layout_constraintStart_toStartOf="@id/cart_item_plus"
-            android:textSize="16sp"
-            android:textColor="@color/g_red"
-            android:textStyle="bold"
-            />
+            app:layout_constraintTop_toBottomOf="@id/cart_item_minus"
+            tools:text="2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

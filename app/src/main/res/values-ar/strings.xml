@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Homeify</string>
-    <string name="introduction_header_text">The Right Address\n For Shopping\n Any Day</string>
-    <string name="introduction_body_text">it\'s very easy to reach the best \n quality among the products</string>
+    <string name="introduction_header_text">العنوان الصحيح للتسوق في أي يوم</string>
+    <string name="introduction_body_text">من السهل جدا الوصول إلى\n أفضل جودة بين المنتجات </string>
     <string name="start">البدء</string>
     <string name="homify">Homify</string>
     <string name="register">تسجيل حساب جديد </string>
@@ -18,21 +18,86 @@
     <string name="are_u_have_account">هل لديك حساب ؟</string>
     <string name="first_name">الاسم الأول</string>
     <string name="last_name">الاسم الأخير</string>
+
+    <string name="yes">نعم</string>
+    <string name="cancel_">إلغاء</string>
+
+    <string name="g_order_placed">تم الطلب</string>
+    <string name="g_confirm">تم التأكيد</string>
+    <string name="g_shipped">تم الشحن</string>
+    <string name="g_delivered">تم التوصيل</string>
+
+
     <string name="reset_password">تغيير كلمة السر</string>
+    <string name="confirm_order_title">تأكيد الطلب</string>
+    <string name="confirm_order_message">هل تريد تأكيد هذا الطلب ؟</string>
     <string name="reset_password_link_will_sent_for_you">رابط تغيير كلمة السر سيتم إرساله لهذا الإيميل..</string>
     <string name="cancel">إلغاء</string>
     <string name="confirm">تأكيد</string>
-
+    <string name="food">المأكولات</string>
+    <string name="notifications">الاشعارات</string>
+    <string name="language">اللغة</string>
+    <string name="help">مساعدة</string>
+    <string name="settings">الإعدادات</string>
+    <string name="name">الإسم</string>
+    <string name="logout">تسجيل خروج</string>
+    <string name="version">Homify 1.0</string>
     <string name="home">الرئيسية</string>
     <string name="search">بحث</string>
     <string name="cart">سلة المشتريات</string>
     <string name="profile">الصفحة الشخصية</string>
-
+    <string name="edit_person_info">تعديل المعلومات الشخصية</string>
+    <string name="orders">الطلبات</string>
     <string name="search_now">ابحث الان</string>
     <string name="hometxt">الرئيسية</string>
     <string name="sports">الرياضة</string>
     <string name="furniture">الأثاث المنزلي</string>
     <string name="shoes">الأحذية</string>
     <string name="accessories">الأكسسوارات</string>
+    <string name="place_order">تأكيد الطلب</string>
+    <string name="my_profile">الصفحة الشخصية</string>
+    <string name="my_orders">طلباتي</string>
+    <string name="products">المنتجات</string>
+    <string name="track_order">تتبع الطلب</string>
+
+    <string name="your_cart_is_empty">سلة مشترياتك فارغة !</string>
+    <string name="see_product">رؤية المنتج</string>
+    <string name="address">العنوان</string>
+    <string name="full_name">الاسم كاملا</string>
+    <string name="location">الموقع</string>
+    <string name="street">الشارع</string>
+    <string name="phone">رقم الهاتف</string>
+    <string name="city">المدينة</string>
+    <string name="state">الحي</string>
+    <string name="delete">حذف</string>
+    <string name="save">حفظ</string>
+    <string name="billing">Billing</string>
+    <string name="payment_method">وسيلةالدفع</string>
+    <string name="best_deals">أفضل العروض</string>
+    <string name="best_products">أفضل المنتجات</string>
+    <string name="g_regional">أخري</string>
+    <string name="billings">جميع الفواتير</string>
+
+    <string name="tab_home">الرئيسية</string>
+    <string name="colors">الألوان</string>
+    <string name="sizes">المقاسات</string>
+    <string name="add_to_cart">أضف للسلة</string>
+    <string name="my_cart">سلة مشترياتي</string>
+    <string name="total">المبلغ الكلي</string>
+    <string name="checkout">فحص</string>
+    <string name="g_chair">الرئيسية</string>
+
+    <string name="billing_payment_desc">هذا التطبيق لايدعم وسيلة دفع حقيقية .. قم بالدفع عند استلام طلبك</string>
+    <string name="shopping_address">عنوان التوصيل</string>
+
+
+
+
+
+
+
+
+
+
 
 </resources>

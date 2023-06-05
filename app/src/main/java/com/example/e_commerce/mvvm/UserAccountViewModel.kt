@@ -6,6 +6,7 @@ import android.net.Uri
 import android.provider.MediaStore
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.e_commerce.MyApp
 import com.example.e_commerce.data.User
 import com.example.e_commerce.utils.RegisterValidation
 import com.example.e_commerce.utils.Resources
@@ -58,7 +59,7 @@ class UserAccountViewModel @Inject constructor(
                 && user.firstName.trim().isNotEmpty()
                 && user.firstName.trim().isNotEmpty()
         if (!areInputsValid) {
-            viewModelScope.launch { _updateInfo.emit(Resources.Error("Check your fields !")) }
+            viewModelScope.launch { _updateInfo.emit(Resources.Error("تاكد من استكمال جميع البيانات!")) }
             return
         }
         viewModelScope.launch { _updateInfo.emit(Resources.Loading()) }
@@ -75,7 +76,10 @@ class UserAccountViewModel @Inject constructor(
     private fun saveUserInfoWithNewImage(user: User, imageUri: Uri) {
         viewModelScope.launch {
             try {
-                val imageBitmap = MediaStore.Images.Media.getBitmap(app.contentResolver, imageUri)
+                val imageBitmap = MediaStore.Images.Media.getBitmap(
+                    getApplication<MyApp>().contentResolver,
+                    imageUri
+                )
                 val byteArrayOutputStream = ByteArrayOutputStream()
                 imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
                 val imageByteArray = byteArrayOutputStream.toByteArray()

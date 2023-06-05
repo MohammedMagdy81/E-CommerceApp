@@ -6,8 +6,9 @@ import com.example.e_commerce.data.Categories
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SportsFragment : BaseCategoryFragment(Categories.Sports) {
+class FoodFragment : BaseCategoryFragment(Categories.Food ) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }
+
 }

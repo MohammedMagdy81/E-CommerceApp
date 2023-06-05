@@ -19,7 +19,7 @@ class CartProductsAdapter :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(cartProduct: CartProduct) {
             binding.apply {
-                Glide.with(itemView).load(cartProduct.product.images[0]).into(cartItemImage)
+                Glide.with(itemView).load(cartProduct.product.images[0]).centerCrop().into(cartItemImage)
                 cartItemName.text = cartProduct.product.name
                 cartItemNumber.text = cartProduct.quantity.toString()
 

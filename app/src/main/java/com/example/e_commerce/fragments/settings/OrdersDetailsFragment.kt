@@ -1,12 +1,14 @@
 package com.example.e_commerce.fragments.settings
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.e_commerce.R
 import com.example.e_commerce.adapters.BillingAdapter
 import com.example.e_commerce.data.order.Order
 import com.example.e_commerce.data.order.OrderStatus
@@ -42,6 +44,7 @@ class OrdersDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupStepView()
         setupProductsRv()
         setupAllOrderData()
     }
@@ -57,25 +60,8 @@ class OrdersDetailsFragment : Fragment() {
 
             billingAdapter.differList.submitList(order!!.products)
 
-            stepView.setSteps(
-                mutableListOf(
-                    OrderStatus.Ordered.status,
-                    OrderStatus.Confirmed.status,
-                    OrderStatus.Shipped.status,
-                    OrderStatus.Delivered.status,
-                )
-            )
-            val currentOrderState = when (getOrderStatus(order!!.status)) {
-                is OrderStatus.Ordered -> 0
-                is OrderStatus.Confirmed -> 1
-                is OrderStatus.Shipped -> 2
-                is OrderStatus.Delivered -> 3
-                else -> 0
-            }
-            stepView.go(currentOrderState, true)
-            if (currentOrderState == 3) {
-                stepView.done(true)
-            }
+
+
 
         }
     }
@@ -86,6 +72,40 @@ class OrdersDetailsFragment : Fragment() {
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             addItemDecoration(HorizontalItemDecoration(10))
             adapter = billingAdapter
+        }
+    }
+
+    private fun setupStepView() {
+        val state = when (args.order.status) {
+            "Ordered" -> 1
+            "Confirmed" -> 2
+            "Shipped" -> 3
+            "Delivered" -> 4
+            else -> {
+                2
+            }
+        }
+
+
+        Log.d("test2", state.toString())
+        val steps = arrayOf<String>(
+            resources.getText(R.string.g_order_placed).toString(),
+            resources.getText(R.string.g_confirm).toString(),
+            resources.getText(R.string.g_shipped).toString(),
+            resources.getText(R.string.g_delivered).toString()
+        )
+
+        binding.stepView.apply {
+            getState().stepsNumber(4)
+                .steps(steps.toMutableList())
+                .commit()
+            if (state == 4) {
+                go(3,false)
+                done(true)
+            }else{
+                go(state, false)
+            }
+
         }
     }
 }

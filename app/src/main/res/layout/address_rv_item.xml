@@ -9,6 +9,7 @@
         android:layout_width="@dimen/smallButtonWidth"
         android:layout_height="wrap_content"
         android:text="@string/hometxt"
+        android:padding="12dp"
         android:textAllCaps="false"
         android:textSize="22sp"
         android:background="@drawable/add_address_btn_bg"

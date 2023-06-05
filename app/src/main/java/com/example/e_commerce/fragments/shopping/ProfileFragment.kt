@@ -1,6 +1,8 @@
 package com.example.e_commerce.fragments.shopping
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -59,17 +61,18 @@ class ProfileFragment : Fragment() {
             }
             linearOut.setOnClickListener {
 
-                binding.profileSpinKit.visibility=View.VISIBLE
-                
+                binding.profileSpinKit.visibility = View.VISIBLE
+
                 viewModel.logout()
                 val intent = Intent(requireActivity(), LoginRegisterActivity::class.java)
                 startActivity(intent)
                 requireActivity().finish()
 
             }
-            tvVersionCode.text = "\n- Mohamed Magdy - \n\n\tVersion ${BuildConfig.VERSION_CODE}"
+            tvVersionCode.text = "Version ${BuildConfig.VERSION_CODE}"
+            collectState()
         }
-        collectState()
+
     }
 
     private fun collectState() {
@@ -86,7 +89,13 @@ class ProfileFragment : Fragment() {
                     }
                     is Resources.Success -> {
                         binding.profileSpinKit.visibility = View.GONE
-                        setupUserData(it.data!!)
+                        it.data?.let { user ->
+                            if (user.imagePath.isNotEmpty())
+                                Glide.with(requireView()).load(it.data.imagePath)
+                                    .into(binding.imgUser)
+                            binding.tvUserName.text = "${it.data.firstName} ${it.data.lastName}"
+                        }
+
                     }
                     else -> Unit
                 }

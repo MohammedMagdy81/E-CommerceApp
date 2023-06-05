@@ -1,5 +1,6 @@
 package com.example.e_commerce.fragments.shopping
 
+import android.graphics.Paint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -114,7 +115,13 @@ class ProductDetailFragment : Fragment() {
     private fun setupData(product: Product) {
         binding.apply {
             productDetailProductName.text = product.name
-            productDetailProductPrice.text = "$ ${product.price}"
+            product.offerPercentage?.let {
+                val remainingPercentage = 1f - it
+                val priceAfterDiscount = remainingPercentage * product.price
+                productDetailProductPrice.text = "$ ${String.format("%.2f", priceAfterDiscount)}"
+
+            }
+
             productDetailProductDesc.text = product.desc
             if (product.colors.isNullOrEmpty())
                 productDetailTvColors.visibility = View.GONE

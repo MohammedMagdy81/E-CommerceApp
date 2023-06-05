@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -42,10 +42,10 @@
                     android:fontFamily="@font/poppins_light"
                     android:textColor="@color/black"
                     android:textSize="24sp"
-                    tools:text="#123456"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/img_close_order"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="#123456" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.appcompat.widget.Toolbar>
@@ -64,7 +64,9 @@
             android:id="@+id/linear_steps_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_margin="12dp"
+            android:gravity="center"
+            android:padding="12dp"
             app:layout_constraintEnd_toEndOf="@id/guideline2"
             app:layout_constraintStart_toStartOf="@id/guideline1"
             app:layout_constraintTop_toBottomOf="@id/toolbar_all_order_details">
@@ -73,7 +75,7 @@
                 android:id="@+id/step_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
+                android:paddingBottom="16dp"
                 app:sv_animationType="Line"
                 app:sv_doneCircleColor="@color/g_orange"
                 app:sv_doneCircleRadius="18dp"
@@ -167,15 +169,15 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_products"
-            tools:listitem="@layout/cart_product_item"
             android:layout_width="0dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="horizontal"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="@id/guideline2"
             app:layout_constraintStart_toStartOf="@id/line1"
-            app:layout_constraintTop_toBottomOf="@id/tv_products" />
+            app:layout_constraintTop_toBottomOf="@id/tv_products"
+            tools:listitem="@layout/cart_product_item" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linear"
@@ -216,10 +218,10 @@
                 android:fontFamily="@font/sf_pro_display"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                tools:text="$ 1500"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="$ 1500" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

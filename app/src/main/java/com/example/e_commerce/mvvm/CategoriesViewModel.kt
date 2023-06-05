@@ -2,7 +2,7 @@ package com.example.e_commerce.mvvm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.e_commerce.data.Category
+import com.example.e_commerce.data.Categories
 import com.example.e_commerce.data.Product
 import com.example.e_commerce.utils.Constants.CATEGORY
 import com.example.e_commerce.utils.Constants.OFFER_PERCENTAGE
@@ -16,7 +16,7 @@ import kotlinx.coroutines.runBlocking
 
 class CategoriesViewModel constructor(
     private val firestore: FirebaseFirestore,
-    private val category: Category
+    private val categories: Categories
 ) : ViewModel() {
 
     private val _offerProducts = MutableStateFlow<Resources<List<Product>>>(Resources.Ideal())
@@ -34,7 +34,7 @@ class CategoriesViewModel constructor(
         runBlocking {
             _offerProducts.emit(Resources.Loading())
         }
-        firestore.collection(PRODUCTS_COLLECTION).whereEqualTo(CATEGORY, category.category)
+        firestore.collection(PRODUCTS_COLLECTION).whereEqualTo(CATEGORY, categories.category)
             .whereNotEqualTo(OFFER_PERCENTAGE, null)
             .get()
             .addOnSuccessListener { result ->
@@ -55,7 +55,7 @@ class CategoriesViewModel constructor(
             _bestProducts.emit(Resources.Loading())
         }
         firestore.collection(PRODUCTS_COLLECTION)
-            .whereEqualTo(CATEGORY, category.category)
+            .whereEqualTo(CATEGORY, categories.category)
             .whereEqualTo(OFFER_PERCENTAGE, null)
             .get()
             .addOnSuccessListener { result ->

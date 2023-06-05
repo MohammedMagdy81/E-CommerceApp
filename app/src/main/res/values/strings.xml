@@ -74,4 +74,14 @@
     <string name="logout">Logout</string>
     <string name="version">Homify 1.0</string>
     <string name="g_regional">Regional</string>
+    <string name="food">Foods</string>
+    <string name="g_chair">Home</string>
+    <string name="confirm_order_message">Do You want to Confirm this Order ?</string>
+    <string name="confirm_order_title">\"Confirm Order.. \"</string>
+    <string name="g_order_placed">Ordered</string>
+    <string name="g_confirm">Confirmed</string>
+    <string name="g_shipped">Shipped</string>
+    <string name="g_delivered">Delivered</string>
+    <string name="yes">Yes</string>
+    <string name="cancel_">Cancel</string>
 </resources>

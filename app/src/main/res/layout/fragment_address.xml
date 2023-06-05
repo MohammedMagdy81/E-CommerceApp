@@ -78,6 +78,7 @@
         style="@style/AddressEditTxt"
         android:layout_marginTop="@dimen/marginTop32"
         android:hint="@string/location"
+        android:gravity="start"
         app:layout_constraintEnd_toEndOf="@id/addressGuideLineRight"
         app:layout_constraintStart_toStartOf="@id/addressGuideLineLeft"
         app:layout_constraintTop_toBottomOf="@id/addressLayoutHeader" />
@@ -86,6 +87,7 @@
         android:id="@+id/addressFullNameEt"
         style="@style/AddressEditTxt"
         android:hint="@string/full_name"
+        android:gravity="start"
         app:layout_constraintEnd_toEndOf="@id/addressGuideLineRight"
         app:layout_constraintStart_toStartOf="@id/addressGuideLineLeft"
         app:layout_constraintTop_toBottomOf="@id/addressLocationEt" />
@@ -94,6 +96,7 @@
         android:id="@+id/addressStreetEt"
         style="@style/AddressEditTxt"
         android:hint="@string/street"
+        android:gravity="start"
         app:layout_constraintEnd_toEndOf="@id/addressGuideLineRight"
         app:layout_constraintStart_toStartOf="@id/addressGuideLineLeft"
         app:layout_constraintTop_toBottomOf="@id/addressFullNameEt" />
@@ -103,6 +106,7 @@
         style="@style/AddressEditTxt"
         android:hint="@string/phone"
         android:inputType="phone"
+        android:gravity="start"
         app:layout_constraintEnd_toEndOf="@id/addressGuideLineRight"
         app:layout_constraintStart_toStartOf="@id/addressGuideLineLeft"
         app:layout_constraintTop_toBottomOf="@id/addressStreetEt" />
@@ -121,12 +125,14 @@
             android:id="@+id/addressCityEt"
             style="@style/AddressEditTxt"
             android:layout_weight="1"
+            android:gravity="start"
             android:hint="@string/city" />
 
         <EditText
             android:id="@+id/addressStateEt"
             style="@style/AddressEditTxt"
             android:layout_weight="1"
+            android:gravity="start"
             android:hint="@string/state" />
 
 

@@ -108,9 +108,9 @@ class BillingFragment : Fragment() {
 
     private fun showOrderConfirmationDialog() {
         val dialog = AlertDialog.Builder(requireContext()).apply {
-            setMessage("Do You want to Confirm this Order ?")
-            setTitle("Confirm Order.. ")
-            setPositiveButton("Yes") { dialog, i ->
+            setMessage(getString(R.string.confirm_order_message))
+            setTitle(getString(R.string.confirm_order_title))
+            setPositiveButton(getString(R.string.yes)) { dialog, i ->
                 dialog.dismiss()
                 val order = Order(
                     status = OrderStatus.Ordered.status,
@@ -121,7 +121,7 @@ class BillingFragment : Fragment() {
                 orderViewModel.placeOrder(order)
 
             }
-            setNegativeButton("Cancel") { dialog, i ->
+            setNegativeButton(getString(R.string.cancel_)) { dialog, i ->
                 dialog.dismiss()
             }
         }

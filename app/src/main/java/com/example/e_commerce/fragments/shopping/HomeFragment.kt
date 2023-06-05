@@ -30,12 +30,13 @@ class HomeFragment : Fragment() {
     }
 
     private fun setUpTabsWithViewPager() {
-        val categories = arrayListOf<Fragment>(
+        val categories = arrayListOf(
             MainCategoryFragment(),
             SportsFragment(),
             ShoesFragment(),
             FurnitureFragment(),
-            AccessoriesFragment()
+            AccessoriesFragment(),
+            FoodFragment()
         )
         binding.homeViewPager.isUserInputEnabled = false
         val tabsAdapter = HomeTabsAdapter(lifecycle, childFragmentManager, categories)
@@ -48,6 +49,7 @@ class HomeFragment : Fragment() {
                 2 -> tab.text = getString(R.string.shoes)
                 3 -> tab.text = getString(R.string.furniture)
                 4 -> tab.text = getString(R.string.accessories)
+                5->tab.text = getString(R.string.food)
             }
 
         }.attach()

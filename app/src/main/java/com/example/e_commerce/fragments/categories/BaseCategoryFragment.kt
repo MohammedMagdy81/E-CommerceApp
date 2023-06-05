@@ -13,9 +13,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.e_commerce.R
 import com.example.e_commerce.adapters.BestProductsAdapter
-import com.example.e_commerce.data.Category
+import com.example.e_commerce.data.Categories
 import com.example.e_commerce.databinding.FragmentBaseCategoryBinding
 import com.example.e_commerce.fragments.shopping.HomeFragmentDirections
 import com.example.e_commerce.mvvm.CategoriesViewModel
@@ -23,13 +22,12 @@ import com.example.e_commerce.mvvm.factory.BaseCategoryViewModelFactory
 import com.example.e_commerce.utils.Resources
 import com.example.e_commerce.utils.showBottomNav
 import com.google.firebase.firestore.FirebaseFirestore
-import dagger.hilt.android.AndroidEntryPoint
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.flow.collectLatest
 import javax.inject.Inject
 
 
-open class BaseCategoryFragment(private val category: Category) : Fragment() {
+open class BaseCategoryFragment(private val categories: Categories) : Fragment() {
 
     private lateinit var binding: FragmentBaseCategoryBinding
 
@@ -41,7 +39,7 @@ open class BaseCategoryFragment(private val category: Category) : Fragment() {
     lateinit var firestore: FirebaseFirestore
 
     val viewModel by viewModels<CategoriesViewModel> {
-        BaseCategoryViewModelFactory(firestore, category)
+        BaseCategoryViewModelFactory(firestore, categories)
     }
 
 
