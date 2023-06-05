@@ -6,7 +6,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/addressBtn"
-        android:layout_width="@dimen/smallButtonWidth"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hometxt"
         android:padding="12dp"

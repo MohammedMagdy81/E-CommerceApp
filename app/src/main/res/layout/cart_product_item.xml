@@ -91,7 +91,7 @@
             android:layout_height="28dp"
             android:layout_marginStart="6dp"
             android:layout_marginTop="6dp"
-            android:src="#52969899"
+
             app:layout_constraintStart_toEndOf="@id/cart_item_selected_color"
             app:layout_constraintTop_toBottomOf="@id/cart_item_price" />
 

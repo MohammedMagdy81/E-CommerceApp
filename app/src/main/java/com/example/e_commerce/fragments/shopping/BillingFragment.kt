@@ -99,7 +99,7 @@ class BillingFragment : Fragment() {
         }
         binding.btnPlaceOrder.setOnClickListener {
             if (selectedAddress == null) {
-                Toasty.error(requireContext(), "Please Select Address !", Toast.LENGTH_LONG).show()
+                Toasty.error(requireContext(), getString(R.string.please_select_address), Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
             showOrderConfirmationDialog()

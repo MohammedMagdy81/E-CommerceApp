@@ -18,7 +18,7 @@ class BestDealProductsAdapter :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) {
             binding.apply {
-                Glide.with(itemView).load(product.images.first()).into(bestDealImg)
+                Glide.with(itemView).load(product.images.first()).centerInside().into(bestDealImg)
                 bestDealProductName.text = product.name
                 product.offerPercentage?.let {
                     val remainingPercentage = 1f - it

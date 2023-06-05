@@ -89,6 +89,7 @@
 
     <string name="billing_payment_desc">هذا التطبيق لايدعم وسيلة دفع حقيقية .. قم بالدفع عند استلام طلبك</string>
     <string name="shopping_address">عنوان التوصيل</string>
+    <string name="please_select_address">من فضلك قم باختيار عنوان للتوصيل</string>
 
 
 

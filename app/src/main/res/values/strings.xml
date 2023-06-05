@@ -84,4 +84,5 @@
     <string name="g_delivered">Delivered</string>
     <string name="yes">Yes</string>
     <string name="cancel_">Cancel</string>
+    <string name="please_select_address">Please Select Address !</string>
 </resources>
