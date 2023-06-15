@@ -42,7 +42,7 @@ class MainCategoryViewModel @Inject constructor(
         getBestProducts()
     }
 
-    private fun getSpecialProducts() {
+     fun getSpecialProducts() {
         runBlocking {
             _specialProducts.emit(Resources.Loading())
         }
@@ -61,7 +61,7 @@ class MainCategoryViewModel @Inject constructor(
 
     }
 
-    private fun getBestDealProducts() {
+     fun getBestDealProducts() {
         runBlocking {
             _bestDealProducts.emit(Resources.Loading())
         }

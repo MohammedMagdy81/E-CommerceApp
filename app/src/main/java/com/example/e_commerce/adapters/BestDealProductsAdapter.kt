@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.e_commerce.R
 import com.example.e_commerce.data.Product
 import com.example.e_commerce.databinding.LayoutBestdealProductItemBinding
 import com.example.e_commerce.databinding.LayoutSpecialProductItemBinding
@@ -18,15 +19,15 @@ class BestDealProductsAdapter :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) {
             binding.apply {
-                Glide.with(itemView).load(product.images.first()).centerInside().into(bestDealImg)
+                Glide.with(itemView).load(product.images.first()).centerCrop().into(bestDealImg)
                 bestDealProductName.text = product.name
                 product.offerPercentage?.let {
                     val remainingPercentage = 1f - it
                     val priceAfterDiscount = remainingPercentage * product.price
-                    bestDealNewPrice.text = "$ ${String.format("%.2f", priceAfterDiscount)}"
+                    bestDealNewPrice.text = binding.root.context.getString(R.string.dollar)+" ${String.format("%.2f", priceAfterDiscount)}"
                     bestDealOldPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
                 }
-                bestDealOldPrice.text = "$ ${product.price}"
+                bestDealOldPrice.text =binding.root.context.getString(R.string.dollar) +"${product.price}"
 
             }
 
@@ -60,7 +61,7 @@ class BestDealProductsAdapter :
 
     override fun onBindViewHolder(holder: BestDealProductsViewHolder, position: Int) {
         holder.bind(differ.currentList[position])
-        holder.itemView.setOnClickListener {
+        holder.binding.bestDealBtnSeeProduct.setOnClickListener {
             onItemClick?.invoke(differ.currentList[position])
         }
     }

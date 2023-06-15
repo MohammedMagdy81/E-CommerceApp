@@ -59,6 +59,12 @@ class MainCategoryFragment : Fragment() {
                 }
 
             })
+        binding.swipeRefresh.setOnRefreshListener {
+            viewModel.getSpecialProducts()
+            viewModel.getBestDealProducts()
+            viewModel.getBestProducts()
+            binding.swipeRefresh.isRefreshing = false
+        }
     }
 
     private fun initClickOnProduct() {
@@ -139,6 +145,7 @@ class MainCategoryFragment : Fragment() {
         }
         lifecycleScope.launchWhenStarted {
             viewModel.bestProducts.collectLatest {
+
                 when (it) {
                     is Resources.Error -> {
                         binding.mainCategorySpinKit.visibility = View.GONE

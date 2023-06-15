@@ -36,7 +36,8 @@ class HomeFragment : Fragment() {
             ShoesFragment(),
             FurnitureFragment(),
             AccessoriesFragment(),
-            FoodFragment()
+            FoodFragment(),
+            CafeFragment()
         )
         binding.homeViewPager.isUserInputEnabled = false
         val tabsAdapter = HomeTabsAdapter(lifecycle, childFragmentManager, categories)
@@ -50,6 +51,7 @@ class HomeFragment : Fragment() {
                 3 -> tab.text = getString(R.string.furniture)
                 4 -> tab.text = getString(R.string.accessories)
                 5->tab.text = getString(R.string.food)
+                6->tab.text = getString(R.string.coffee)
             }
 
         }.attach()

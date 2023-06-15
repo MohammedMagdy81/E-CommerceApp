@@ -1,6 +1,7 @@
 package com.example.e_commerce.fragments.categories
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -22,10 +23,12 @@ import com.example.e_commerce.mvvm.factory.BaseCategoryViewModelFactory
 import com.example.e_commerce.utils.Resources
 import com.example.e_commerce.utils.showBottomNav
 import com.google.firebase.firestore.FirebaseFirestore
+import dagger.hilt.android.AndroidEntryPoint
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.flow.collectLatest
 import javax.inject.Inject
 
+@AndroidEntryPoint
 
 open class BaseCategoryFragment(private val categories: Categories) : Fragment() {
 
@@ -93,6 +96,12 @@ open class BaseCategoryFragment(private val categories: Categories) : Fragment()
     private fun observeToBestProductsState() {
         lifecycleScope.launchWhenStarted {
             viewModel.bestProducts.collectLatest {
+                it.data?.let {
+                    if (it.isEmpty())
+                        binding.bestProductsTv.visibility = View.GONE
+                    else
+                        binding.bestProductsTv.visibility = View.VISIBLE
+                }
                 when (it) {
                     is Resources.Error -> {
                         binding.baseCategorySpinkit.visibility = View.GONE
@@ -103,6 +112,9 @@ open class BaseCategoryFragment(private val categories: Categories) : Fragment()
                         binding.baseCategorySpinkit.visibility = View.VISIBLE
                     }
                     is Resources.Success -> {
+                        for (p in it.data!!){
+                            Log.d("BestProduct", "$p")
+                        }
                         binding.baseCategorySpinkit.visibility = View.GONE
                         bestProductsAdapter.differ.submitList(it.data)
                     }
@@ -115,6 +127,12 @@ open class BaseCategoryFragment(private val categories: Categories) : Fragment()
     private fun observeToOfferState() {
         lifecycleScope.launchWhenStarted {
             viewModel.offerProducts.collectLatest {
+                it.data?.let {
+                    if (it.isEmpty())
+                        binding.discountsProductsTv.visibility = View.GONE
+                    else
+                        binding.discountsProductsTv.visibility = View.VISIBLE
+                }
                 when (it) {
                     is Resources.Error -> {
                         binding.baseCategorySpinkit.visibility = View.GONE
@@ -125,6 +143,9 @@ open class BaseCategoryFragment(private val categories: Categories) : Fragment()
                         binding.baseCategorySpinkit.visibility = View.VISIBLE
                     }
                     is Resources.Success -> {
+                        for (p in it.data!!){
+                            Log.d("OfferProduct", "$p")
+                        }
                         binding.baseCategorySpinkit.visibility = View.GONE
                         offerAdapter.differ.submitList(it.data)
                     }

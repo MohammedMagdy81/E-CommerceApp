@@ -6,4 +6,6 @@ sealed class Categories(val category: String) {
     object Furniture : Categories("Furniture")
     object Accessory : Categories("Accessory")
     object Food : Categories("Food")
+    object Coffee : Categories("Coffee")
+
 }

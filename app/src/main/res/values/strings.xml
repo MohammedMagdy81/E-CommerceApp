@@ -85,4 +85,13 @@
     <string name="yes">Yes</string>
     <string name="cancel_">Cancel</string>
     <string name="please_select_address">Please Select Address !</string>
+    <string name="coffee">Coffee</string>
+    <string name="product_added_successfully">Product Added Successfully .</string>
+    <string name="dollar">EG</string>
+    <string name="discounts_products">Discount Products</string>
+    <string name="delete_item">\"Delete Item \"</string>
+    <string name="are_u_want_to_delete">Do You want to delete Item From Your Cart ?</string>
+    <string name="order_confirmed_successfully">\"Order Confirmed Successfully \"</string>
+    <string name="g_arabic">اللغة العربية</string>
+    <string name="g_english">English</string>
 </resources>

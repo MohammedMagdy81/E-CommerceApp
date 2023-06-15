@@ -12,6 +12,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/discountsProductsTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:text="@string/discounts_products"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <com.github.ybq.android.spinkit.SpinKitView
             android:id="@+id/baseCategorySpinkit"
             style="@style/SpinKitView.Large.Circle"
@@ -30,7 +42,7 @@
             android:id="@+id/rvOffer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintTop_toBottomOf="@id/discountsProductsTv"
             android:layout_margin="10dp"
             android:padding="5dp"
             app:layout_constraintStart_toStartOf="parent"/>

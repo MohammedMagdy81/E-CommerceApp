@@ -79,7 +79,7 @@ class BillingFragment : Fragment() {
                         binding.btnPlaceOrder.revertAnimation()
                         Toasty.success(
                             requireContext(),
-                            "Order Confirmed Successfully ",
+                            getString(R.string.order_confirmed_successfully),
                             Toast.LENGTH_LONG
                         ).show()
                         findNavController().navigateUp()

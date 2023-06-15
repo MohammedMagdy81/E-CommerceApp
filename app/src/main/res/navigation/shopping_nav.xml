@@ -43,6 +43,9 @@
         <action
             android:id="@+id/action_profileFragment_to_billingFragment"
             app:destination="@id/billingFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_languageFragment"
+            app:destination="@id/languageFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -105,4 +108,9 @@
             android:name="order"
             app:argType="com.example.e_commerce.data.order.Order" />
     </fragment>
+    <fragment
+        android:id="@+id/languageFragment"
+        android:name="com.example.e_commerce.fragments.settings.LanguageFragment"
+        android:label="fragment_language"
+        tools:layout="@layout/fragment_language" />
 </navigation>

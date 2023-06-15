@@ -69,7 +69,7 @@ class OrdersDetailsFragment : Fragment() {
     private fun setupProductsRv() {
         binding.rvProducts.apply {
             layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             addItemDecoration(HorizontalItemDecoration(10))
             adapter = billingAdapter
         }

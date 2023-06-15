@@ -53,7 +53,7 @@ class SpecialProductsAdapter :
 
     override fun onBindViewHolder(holder: SpecialProductsViewHolder, position: Int) {
         holder.bind(differ.currentList[position])
-        holder.itemView.setOnClickListener {
+        holder.binding.btnAddToCart.setOnClickListener {
             onItemClick?.invoke(differ.currentList[position])
         }
     }

@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.e_commerce.R
 import com.example.e_commerce.adapters.ColorsAdapter
 import com.example.e_commerce.adapters.SizesAdapter
 import com.example.e_commerce.adapters.ViewPagerProductDetailAdapter
@@ -77,7 +78,7 @@ class ProductDetailFragment : Fragment() {
                         binding.productDetailBtnAddtocart.revertAnimation()
                         Toasty.success(
                             requireContext(),
-                            "Product Added Successfully .",
+                            getString(R.string.product_added_successfully),
                             Toast.LENGTH_LONG
                         ).show()
 
@@ -115,14 +116,19 @@ class ProductDetailFragment : Fragment() {
     private fun setupData(product: Product) {
         binding.apply {
             productDetailProductName.text = product.name
+            if (product.offerPercentage== null){
+                productDetailProductPrice.text = getString(R.string.dollar) + "${product.price}"
+            }
+
             product.offerPercentage?.let {
                 val remainingPercentage = 1f - it
                 val priceAfterDiscount = remainingPercentage * product.price
-                productDetailProductPrice.text = "$ ${String.format("%.2f", priceAfterDiscount)}"
-
+                productDetailProductPrice.text =
+                    getString(R.string.dollar) + "${String.format("%.2f", priceAfterDiscount)}"
             }
 
-            productDetailProductDesc.text = product.desc
+
+            productDetailProductDesc.text = product.description
             if (product.colors.isNullOrEmpty())
                 productDetailTvColors.visibility = View.GONE
             if (product.sizes.isNullOrEmpty())

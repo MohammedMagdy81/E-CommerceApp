@@ -51,6 +51,11 @@ class ProfileFragment : Fragment() {
                 findNavController().navigate(R.id.action_profileFragment_to_ordersFragment)
                 hideBottomNav()
             }
+
+            linearLanguage.setOnClickListener {
+                findNavController().navigate(R.id.action_profileFragment_to_languageFragment)
+                hideBottomNav()
+            }
             linearBilling.setOnClickListener {
                 val action = ProfileFragmentDirections.actionProfileFragmentToBillingFragment(
                     0f,
@@ -60,7 +65,6 @@ class ProfileFragment : Fragment() {
                 hideBottomNav()
             }
             linearOut.setOnClickListener {
-
                 binding.profileSpinKit.visibility = View.VISIBLE
 
                 viewModel.logout()

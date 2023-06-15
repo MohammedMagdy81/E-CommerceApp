@@ -15,12 +15,20 @@
     <string name="facebook">الفيس بوك</string>
     <string name="gmail">حساب جوجل</string>
     <string name="let_s_register">هيا بنا نسجل </string>
+    <string name="dollar">جنيه</string>
+    <string name="discounts_products">منتجات عليها خصومات</string>
+
+    <string name="delete_item">حذف المنتج</string>
+    <string name="are_u_want_to_delete">هل تريد حذا المنتج من سلة مشترياتك ؟</string>
+
+
     <string name="are_u_have_account">هل لديك حساب ؟</string>
     <string name="first_name">الاسم الأول</string>
     <string name="last_name">الاسم الأخير</string>
 
     <string name="yes">نعم</string>
     <string name="cancel_">إلغاء</string>
+    <string name="product_added_successfully">تم إضافة لمنتج إلي سلة المشتريات..</string>
 
     <string name="g_order_placed">تم الطلب</string>
     <string name="g_confirm">تم التأكيد</string>
@@ -87,18 +95,12 @@
     <string name="checkout">فحص</string>
     <string name="g_chair">الرئيسية</string>
 
+    <string name="order_confirmed_successfully">تم تأكيد الطلب بنجاح..</string>
+
     <string name="billing_payment_desc">هذا التطبيق لايدعم وسيلة دفع حقيقية .. قم بالدفع عند استلام طلبك</string>
     <string name="shopping_address">عنوان التوصيل</string>
     <string name="please_select_address">من فضلك قم باختيار عنوان للتوصيل</string>
-
-
-
-
-
-
-
-
-
+    <string name="coffee">منتجات القهوة</string>
 
 
 </resources>

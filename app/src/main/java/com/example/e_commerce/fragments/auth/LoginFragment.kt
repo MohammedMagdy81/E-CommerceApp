@@ -68,7 +68,6 @@ class LoginFragment : Fragment() {
                     }
                     is Resources.Success -> {
                         binding.loginBtnLogin.revertAnimation()
-                        Toasty.success(requireContext(), "هلا وغلا فيك ", Toast.LENGTH_LONG).show()
                         goToShoppingActivity()
                     }
                     else -> Unit
