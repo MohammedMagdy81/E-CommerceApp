@@ -70,25 +70,25 @@
             app:layout_constraintEnd_toEndOf="@id/productDetailCard"
             app:layout_constraintTop_toBottomOf="@id/productDetailCard"
             tools:text="$ 1200" />
+
         <TextView
             android:id="@+id/productDetailProductDesc"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:paddingBottom="4dp"
-            android:maxLines="2"
-            android:padding="2dp"
-            android:layout_marginHorizontal="12dp"
-
+            android:layout_marginBottom="12dp"
             android:ellipsize="end"
             android:gravity="start"
+            android:maxLines="2"
+            android:padding="4dp"
+            android:paddingBottom="4dp"
             android:singleLine="true"
-            android:layout_marginBottom="12dp"
-            app:layout_constraintBottom_toTopOf="@id/productDetailLine"
-            app:layout_constraintTop_toBottomOf="@id/productDetailProductName"
-            app:layout_constraintStart_toStartOf="@id/productDetailProductName"
             android:textColor="@color/g_gray700"
             android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/productDetailLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/productDetailProductName"
+            app:layout_constraintTop_toBottomOf="@id/productDetailProductName"
             tools:text="Product Desc" />
         <View
             android:id="@+id/productDetailLine"
