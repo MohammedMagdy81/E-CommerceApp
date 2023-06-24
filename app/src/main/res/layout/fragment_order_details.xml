@@ -10,6 +10,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/celebrationAnim"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:alpha=".8"
+            app:lottie_autoPlay="true"
+            app:lottie_enableMergePathsForKitKatAndAbove="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/celebration" />
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_all_order_details"
             android:layout_width="0dp"
@@ -80,7 +91,7 @@
                 app:sv_doneCircleColor="@color/g_orange"
                 app:sv_doneCircleRadius="18dp"
                 app:sv_doneStepLineColor="@color/g_orange"
-                app:sv_doneStepMarkColor="@color/orange_color"
+                app:sv_doneStepMarkColor="@color/white"
                 app:sv_doneTextColor="@color/g_hint"
                 app:sv_nextStepLineColor="@color/g_hint"
                 app:sv_nextTextColor="@color/g_hint"
@@ -203,6 +214,7 @@
                 android:text="@string/total"
                 android:textColor="@color/black"
                 android:textSize="19sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -217,7 +229,8 @@
                 android:layout_marginBottom="15dp"
                 android:fontFamily="@font/sf_pro_display"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

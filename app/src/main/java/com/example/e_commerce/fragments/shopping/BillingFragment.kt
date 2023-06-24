@@ -26,6 +26,7 @@ import com.example.e_commerce.utils.Resources
 import dagger.hilt.android.AndroidEntryPoint
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.flow.collectLatest
+import java.util.*
 
 
 @AndroidEntryPoint
@@ -53,14 +54,29 @@ class BillingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        checkVisibility()
+
         setupAddressRv()
         setupBillingProductRv()
         collectAddressesState()
         initClickListener()
         collectOrderState()
-        binding.billingPriceTotal.text = args.totalPrice.toString()
+        binding.billingPriceTotal.text =
+            "$ ${String.format(Locale.getDefault(), "%.2f", args.totalPrice)}"
         billingProductAdapter.differList.submitList(args.products.toList())
 
+    }
+
+    private fun checkVisibility() {
+        if (!args.payment) {
+            binding.apply {
+                btnPlaceOrder.visibility = View.INVISIBLE
+                billingTotalContainer.visibility = View.INVISIBLE
+                view3.visibility = View.INVISIBLE
+                view2.visibility = View.INVISIBLE
+            }
+        }
     }
 
     private fun collectOrderState() {
@@ -99,7 +115,11 @@ class BillingFragment : Fragment() {
         }
         binding.btnPlaceOrder.setOnClickListener {
             if (selectedAddress == null) {
-                Toasty.error(requireContext(), getString(R.string.please_select_address), Toast.LENGTH_LONG).show()
+                Toasty.error(
+                    requireContext(),
+                    getString(R.string.please_select_address),
+                    Toast.LENGTH_LONG
+                ).show()
                 return@setOnClickListener
             }
             showOrderConfirmationDialog()

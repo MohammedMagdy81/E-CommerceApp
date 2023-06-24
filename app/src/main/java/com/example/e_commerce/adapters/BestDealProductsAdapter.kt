@@ -11,6 +11,7 @@ import com.example.e_commerce.R
 import com.example.e_commerce.data.Product
 import com.example.e_commerce.databinding.LayoutBestdealProductItemBinding
 import com.example.e_commerce.databinding.LayoutSpecialProductItemBinding
+import java.util.*
 
 class BestDealProductsAdapter :
     RecyclerView.Adapter<BestDealProductsAdapter.BestDealProductsViewHolder>() {
@@ -24,10 +25,17 @@ class BestDealProductsAdapter :
                 product.offerPercentage?.let {
                     val remainingPercentage = 1f - it
                     val priceAfterDiscount = remainingPercentage * product.price
-                    bestDealNewPrice.text = binding.root.context.getString(R.string.dollar)+" ${String.format("%.2f", priceAfterDiscount)}"
+                    bestDealNewPrice.text = binding.root.context.getString(R.string.dollar) + " ${
+                        String.format(
+                            Locale.getDefault(),
+                            "%.2f",
+                            priceAfterDiscount
+                        )
+                    }"
                     bestDealOldPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
                 }
-                bestDealOldPrice.text =binding.root.context.getString(R.string.dollar) +"${product.price}"
+                bestDealOldPrice.text =
+                    binding.root.context.getString(R.string.dollar) + "${product.price}"
 
             }
 

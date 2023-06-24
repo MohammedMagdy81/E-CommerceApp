@@ -59,6 +59,7 @@ class LoginFragment : Fragment() {
             viewModel.loginState.collect {
                 when (it) {
                     is Resources.Loading -> {
+
                         binding.loginBtnLogin.startAnimation()
                     }
                     is Resources.Error -> {

@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.e_commerce.data.CartProduct
 import com.example.e_commerce.databinding.CartProductItemBinding
 import com.example.e_commerce.utils.getProductPrice
+import java.util.*
 
 class CartProductsAdapter :
     RecyclerView.Adapter<CartProductsAdapter.CartProductsViewHolder>() {
@@ -26,7 +27,7 @@ class CartProductsAdapter :
                 val priceAfterPercentage =
                     cartProduct.product.offerPercentage.getProductPrice(cartProduct.product.price)
 
-                cartItemPrice.text="$ ${String.format("%.2f", priceAfterPercentage)}"
+                cartItemPrice.text="$ ${String.format(Locale.getDefault(),"%.2f", priceAfterPercentage)}"
 
                 cartProduct.selectedSize?.let {
                     tvCartProductSize.text = it

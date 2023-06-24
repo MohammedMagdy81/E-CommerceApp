@@ -14,6 +14,7 @@ import com.example.e_commerce.data.CartProduct
 import com.example.e_commerce.databinding.AddressRvItemBinding
 import com.example.e_commerce.databinding.BillingProductRvItemBinding
 import com.example.e_commerce.utils.getProductPrice
+import java.util.*
 
 class BillingAdapter : RecyclerView.Adapter<BillingAdapter.BillingViewHolder>() {
 
@@ -27,7 +28,8 @@ class BillingAdapter : RecyclerView.Adapter<BillingAdapter.BillingViewHolder>() 
                 billingProductQuantity.text = cartProduct.quantity.toString()
                 val priceAfterDiscount =
                     cartProduct.product.offerPercentage.getProductPrice(cartProduct.product.price)
-                billingProductPrice.text = "$ ${String.format("%.2f", priceAfterDiscount)}"
+                billingProductPrice.text = binding.root.context.getString(R.string.dollar) +
+                        " ${String.format(Locale.getDefault(), "%.2f", priceAfterDiscount)}"
                 cartProduct.selectedSize?.let {
                     billingSelectSize.text = it
                 }

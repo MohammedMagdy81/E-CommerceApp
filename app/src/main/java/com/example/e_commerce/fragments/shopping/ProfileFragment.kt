@@ -59,7 +59,8 @@ class ProfileFragment : Fragment() {
             linearBilling.setOnClickListener {
                 val action = ProfileFragmentDirections.actionProfileFragmentToBillingFragment(
                     0f,
-                    emptyArray()
+                    emptyArray(),
+                    false
                 )
                 findNavController().navigate(action)
                 hideBottomNav()
@@ -106,14 +107,6 @@ class ProfileFragment : Fragment() {
             }
         }
     }
-
-    private fun setupUserData(user: User) {
-        Glide.with(this@ProfileFragment).load(user.imagePath).error(R.drawable.ic_person)
-            .into(binding.imgUser)
-        binding.tvUserName.text = "${user.firstName} ${user.lastName}"
-
-    }
-
     override fun onResume() {
         super.onResume()
         showBottomNav()

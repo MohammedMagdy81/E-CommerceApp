@@ -6,9 +6,11 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.e_commerce.R
 import com.example.e_commerce.data.Product
 import com.example.e_commerce.databinding.LayoutSpecialProductItemBinding
 import com.example.e_commerce.utils.getProductPrice
+import java.util.*
 
 class SpecialProductsAdapter :
     RecyclerView.Adapter<SpecialProductsAdapter.SpecialProductsViewHolder>() {
@@ -17,11 +19,19 @@ class SpecialProductsAdapter :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) {
             binding.apply {
-                Glide.with(itemView).load(product.images[0]).centerInside().into(specialProductImage)
+                Glide.with(itemView).load(product.images[0]).centerInside()
+                    .into(specialProductImage)
                 specialProductName.text = product.name
 
                 val priceAfterDiscount = product.offerPercentage.getProductPrice(product.price)
-                specialPRoductPrice.text = "$ ${String.format("%.2f", priceAfterDiscount)}"
+                specialPRoductPrice.text =
+                    binding.root.context.getString(R.string.dollar) + " ${
+                        String.format(
+                            Locale.getDefault(),
+                            "%.2f",
+                            priceAfterDiscount
+                        )
+                    }"
                 //specialPRoductPrice.text = product.price.toString()
             }
         }

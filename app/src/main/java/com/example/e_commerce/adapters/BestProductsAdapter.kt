@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.e_commerce.data.Product
 import com.example.e_commerce.databinding.LayoutProductItemBinding
 import com.example.e_commerce.utils.getProductPrice
+import java.util.*
 
 class BestProductsAdapter : RecyclerView.Adapter<BestProductsAdapter.BestProductsViewHolder>() {
 
@@ -21,7 +22,7 @@ class BestProductsAdapter : RecyclerView.Adapter<BestProductsAdapter.BestProduct
                 Glide.with(itemView).load(product.images.first()).into(imgProduct)
                 tvName.text = product.name
                 val priceAfterDiscount = product.offerPercentage.getProductPrice(product.price)
-                tvNewPrice.text = "$ ${String.format("%.2f", priceAfterDiscount)}"
+                tvNewPrice.text = "$ ${String.format(Locale.getDefault(),"%.2f", priceAfterDiscount)}"
                 if (product.offerPercentage!=null){
                     tvPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
                 }

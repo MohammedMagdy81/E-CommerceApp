@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Homeify</string>
+    <string name="app_name">تسوق</string>
     <string name="introduction_header_text">العنوان الصحيح للتسوق في أي يوم</string>
     <string name="introduction_body_text">من السهل جدا الوصول إلى\n أفضل جودة بين المنتجات </string>
     <string name="start">البدء</string>
@@ -15,7 +15,7 @@
     <string name="facebook">الفيس بوك</string>
     <string name="gmail">حساب جوجل</string>
     <string name="let_s_register">هيا بنا نسجل </string>
-    <string name="dollar">جنيه</string>
+    <string name="dollar">LE</string>
     <string name="discounts_products">منتجات عليها خصومات</string>
 
     <string name="delete_item">حذف المنتج</string>

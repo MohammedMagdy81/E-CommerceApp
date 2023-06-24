@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,6 +17,8 @@ import com.example.e_commerce.data.order.getOrderStatus
 import com.example.e_commerce.databinding.FragmentOrderDetailsBinding
 import com.example.e_commerce.utils.HorizontalItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
+import es.dmoral.toasty.Toasty
+import java.util.*
 
 @AndroidEntryPoint
 class OrdersDetailsFragment : Fragment() {
@@ -44,6 +47,9 @@ class OrdersDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (order?.status == OrderStatus.Delivered.status) {
+            binding.celebrationAnim.visibility = View.VISIBLE
+        }
         setupStepView()
         setupProductsRv()
         setupAllOrderData()
@@ -56,11 +62,13 @@ class OrdersDetailsFragment : Fragment() {
             tvPhoneNumber.text = order?.address?.phone
             tvFullName.text = order?.address?.fullName
             tvShoppingAddresses.text = "${order?.address?.addressTitle}"
-            tvTotalprice.text = "$ ${order?.totalPrice}"
+            tvTotalprice.text = requireContext().getString(R.string.dollar) + "  " + String.format(
+                Locale.getDefault(),
+                "%.2f",
+                order?.totalPrice
+            )
 
             billingAdapter.differList.submitList(order!!.products)
-
-
 
 
         }
@@ -100,10 +108,10 @@ class OrdersDetailsFragment : Fragment() {
                 .steps(steps.toMutableList())
                 .commit()
             if (state == 4) {
-                go(3,false)
+                go(3, true)
                 done(true)
-            }else{
-                go(state, false)
+            } else {
+                go(state, true)
             }
 
         }

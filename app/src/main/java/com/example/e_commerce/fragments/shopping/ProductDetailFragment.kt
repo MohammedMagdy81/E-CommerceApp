@@ -24,6 +24,7 @@ import com.example.e_commerce.utils.Resources
 import com.example.e_commerce.utils.hideBottomNav
 import dagger.hilt.android.AndroidEntryPoint
 import es.dmoral.toasty.Toasty
+import java.util.*
 
 @AndroidEntryPoint
 class ProductDetailFragment : Fragment() {
@@ -116,15 +117,27 @@ class ProductDetailFragment : Fragment() {
     private fun setupData(product: Product) {
         binding.apply {
             productDetailProductName.text = product.name
-            if (product.offerPercentage== null){
-                productDetailProductPrice.text = getString(R.string.dollar) + "${product.price}"
+            if (product.offerPercentage == null) {
+                productDetailProductPrice.text = getString(R.string.dollar) + " ${
+                    String.format(
+                        Locale.getDefault(),
+                        "%.2f",
+                        product.price
+                    )
+                }"
             }
 
             product.offerPercentage?.let {
                 val remainingPercentage = 1f - it
                 val priceAfterDiscount = remainingPercentage * product.price
                 productDetailProductPrice.text =
-                    getString(R.string.dollar) + "${String.format("%.2f", priceAfterDiscount)}"
+                    getString(R.string.dollar) + " ${
+                        String.format(
+                            Locale.getDefault(),
+                            "%.2f",
+                            priceAfterDiscount
+                        )
+                    }"
             }
 
 

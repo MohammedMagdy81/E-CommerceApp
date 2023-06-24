@@ -23,6 +23,7 @@ import com.example.e_commerce.utils.VerticalItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.flow.collectLatest
+import java.util.*
 
 @AndroidEntryPoint
 class CartFragment : Fragment() {
@@ -88,7 +89,8 @@ class CartFragment : Fragment() {
         binding.cartBtnCheckout.setOnClickListener {
             val action = CartFragmentDirections.actionCartFragmentToBillingFragment(
                 totalPrice,
-                cartAdapter.differ.currentList.toTypedArray()
+                cartAdapter.differ.currentList.toTypedArray(),
+                true
             )
             findNavController().navigate(action)
         }
@@ -98,8 +100,15 @@ class CartFragment : Fragment() {
         lifecycleScope.launchWhenStarted {
             viewModel.productsPrice.collectLatest { price ->
                 price?.let {
-                    totalPrice=price
-                    binding.cartPriceTotal.text = "$ $price"
+                    totalPrice = price
+                    binding.cartPriceTotal.text =
+                        binding.root.context.getString(R.string.dollar) + " ${
+                            String.format(
+                                Locale.getDefault(),
+                                "%.2f",
+                                price
+                            )
+                        }"
                 }
 
             }
