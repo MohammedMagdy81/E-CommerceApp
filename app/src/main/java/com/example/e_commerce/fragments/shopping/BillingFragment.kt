@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -21,6 +22,7 @@ import com.example.e_commerce.data.order.OrderStatus
 import com.example.e_commerce.databinding.FragmentBillingBinding
 import com.example.e_commerce.mvvm.BillingViewModel
 import com.example.e_commerce.mvvm.OrderViewModel
+import com.example.e_commerce.utils.Constants
 import com.example.e_commerce.utils.HorizontalItemDecoration
 import com.example.e_commerce.utils.Resources
 import dagger.hilt.android.AndroidEntryPoint
@@ -112,6 +114,13 @@ class BillingFragment : Fragment() {
         }
         addressAdapter.onItemClick = {
             selectedAddress = it
+            if (!args.payment){
+                val bundle = bundleOf().apply {
+                    putParcelable(Constants.ADDRESS_KEY, selectedAddress)
+                }
+                findNavController().navigate(R.id.action_billingFragment_to_addressFragment, bundle)
+            }
+
         }
         binding.btnPlaceOrder.setOnClickListener {
             if (selectedAddress == null) {

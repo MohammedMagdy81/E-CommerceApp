@@ -2,6 +2,7 @@ package com.example.e_commerce.utils
 
 object Constants {
 
+    const val ADDRESS_KEY: String ="address"
     const val USER_COLLECTION="users"
     const val INTRODUCTION_PREF="introductionSharedPref"
 

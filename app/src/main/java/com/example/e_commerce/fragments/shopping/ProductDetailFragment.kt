@@ -141,7 +141,9 @@ class ProductDetailFragment : Fragment() {
             }
 
 
-            productDetailProductDesc.text = product.description
+            product.description?.let {
+                productDetailProductDesc.text =it
+            }
             if (product.colors.isNullOrEmpty())
                 productDetailTvColors.visibility = View.GONE
             if (product.sizes.isNullOrEmpty())

@@ -1,6 +1,7 @@
 package com.example.e_commerce.fragments.categories
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.e_commerce.R
 import com.example.e_commerce.adapters.BestDealProductsAdapter
 import com.example.e_commerce.adapters.BestProductsAdapter
 import com.example.e_commerce.adapters.SpecialProductsAdapter
@@ -59,12 +59,12 @@ class MainCategoryFragment : Fragment() {
                 }
 
             })
-        binding.swipeRefresh.setOnRefreshListener {
-            viewModel.getSpecialProducts()
-            viewModel.getBestDealProducts()
-            viewModel.getBestProducts()
-            binding.swipeRefresh.isRefreshing = false
-        }
+//        binding.swipeRefresh.setOnRefreshListener {
+//            viewModel.getSpecialProducts()
+//            viewModel.getBestDealProducts()
+//            viewModel.getBestProducts()
+//            binding.swipeRefresh.isRefreshing = false
+//        }
     }
 
     private fun initClickOnProduct() {
@@ -86,37 +86,41 @@ class MainCategoryFragment : Fragment() {
         bestDealProductsAdapter = BestDealProductsAdapter()
         binding.apply {
             rvBestDeal.layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             rvBestDeal.adapter = bestDealProductsAdapter
+            rvBestDeal.setHasFixedSize(true)
+
+
         }
     }
 
     private fun setupBestProductAdapter() {
         bestProductsAdapter = BestProductsAdapter()
         binding.apply {
-            rvBestProducts.layoutManager =
+            bestProductsRv.layoutManager =
                 GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
-            rvBestProducts.adapter = bestProductsAdapter
+            bestProductsRv.adapter = bestProductsAdapter
         }
     }
 
     private fun observeToSpecialProducts() {
         lifecycleScope.launchWhenStarted {
-            viewModel.specialProducts.collectLatest {
+            viewModel.specialProducts.collect {
                 when (it) {
                     is Resources.Error -> {
-                        binding.mainCategorySpinKit.visibility = View.GONE
+                       // binding.mainCategorySpinKit.visibility = View.GONE
                         Toasty.error(
                             requireContext(), "حدث خطأ ربما انقطع الاتصال بالانترنت !",
                             Toast.LENGTH_LONG
                         ).show()
                     }
                     is Resources.Loading -> {
-                        binding.mainCategorySpinKit.visibility = View.VISIBLE
+                        //binding.mainCategorySpinKit.visibility = View.VISIBLE
                     }
                     is Resources.Success -> {
-                        binding.mainCategorySpinKit.visibility = View.GONE
+                        //binding.mainCategorySpinKit.visibility = View.GONE
                         specialProductAdapter.differ.submitList(it.data)
+                        Log.d("SpecialProducts", "${it.data}")
                     }
                     else -> Unit
                 }
@@ -126,17 +130,17 @@ class MainCategoryFragment : Fragment() {
             viewModel.bestDealProducts.collectLatest {
                 when (it) {
                     is Resources.Error -> {
-                        binding.mainCategorySpinKit.visibility = View.GONE
+                        //binding.mainCategorySpinKit.visibility = View.GONE
                         Toasty.error(
                             requireContext(), "عفوا لقد حدث خطأ !",
                             Toast.LENGTH_LONG
                         ).show()
                     }
                     is Resources.Loading -> {
-                        binding.mainCategorySpinKit.visibility = View.VISIBLE
+                        //binding.mainCategorySpinKit.visibility = View.VISIBLE
                     }
                     is Resources.Success -> {
-                        binding.mainCategorySpinKit.visibility = View.GONE
+                        //binding.mainCategorySpinKit.visibility = View.GONE
                         bestDealProductsAdapter.differ.submitList(it.data)
                     }
                     else -> Unit
@@ -148,7 +152,7 @@ class MainCategoryFragment : Fragment() {
 
                 when (it) {
                     is Resources.Error -> {
-                        binding.mainCategorySpinKit.visibility = View.GONE
+                        // binding.mainCategorySpinKit.visibility = View.GONE
                         Toasty.error(
                             requireContext(), "حدث خطأ تأكد من الاتصال بالنترنت !",
                             Toast.LENGTH_LONG
@@ -156,11 +160,11 @@ class MainCategoryFragment : Fragment() {
                         binding.bestProductProgress.visibility = View.GONE
                     }
                     is Resources.Loading -> {
-                        binding.mainCategorySpinKit.visibility = View.VISIBLE
+                        //binding.mainCategorySpinKit.visibility = View.VISIBLE
                         binding.bestProductProgress.visibility = View.VISIBLE
                     }
                     is Resources.Success -> {
-                        binding.mainCategorySpinKit.visibility = View.GONE
+                        //binding.mainCategorySpinKit.visibility = View.GONE
                         bestProductsAdapter.differ.submitList(it.data)
                         binding.bestProductProgress.visibility = View.GONE
                     }

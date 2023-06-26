@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.e_commerce.data.Address
 import com.example.e_commerce.databinding.FragmentAddressBinding
 import com.example.e_commerce.mvvm.AddressViewModel
@@ -23,6 +24,8 @@ class AddressFragment : Fragment() {
     private lateinit var binding: FragmentAddressBinding
     private val viewModel by viewModels<AddressViewModel>()
 
+    private val args by navArgs<AddressFragmentArgs>()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,6 +38,22 @@ class AddressFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val address = args.address
+        if (address == null) {
+            binding.addressBtnDelete.visibility = View.GONE
+        } else {
+            binding.apply {
+                addressFullNameEt.setText(address.fullName)
+                addressLocationEt.setText(address.addressTitle)
+                addressCityEt.setText(address.city)
+                addressPhoneEt.setText(address.phone)
+                addressStreetEt.setText(address.street)
+                addressStateEt.setText(address.state)
+            }
+        }
+
+
+
         binding.apply {
             addressBtnSave.setOnClickListener {
                 val address = Address(

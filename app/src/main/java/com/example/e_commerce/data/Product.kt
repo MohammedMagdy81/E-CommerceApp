@@ -8,7 +8,7 @@ data class Product(
     val id: String,
     val name: String,
     val category: String,
-    val description: String,
+    val description: String?,
     val price: Float,
     val offerPercentage: Float? = null,
     val colors: List<Int>? = null,

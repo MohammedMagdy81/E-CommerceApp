@@ -73,7 +73,8 @@
         <argument
             android:name="address"
             app:argType="com.example.e_commerce.data.Address"
-            app:nullable="true" />
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
     <fragment
         android:id="@+id/billingFragment"
