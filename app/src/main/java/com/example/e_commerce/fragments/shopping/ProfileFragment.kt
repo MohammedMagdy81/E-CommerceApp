@@ -47,6 +47,7 @@ class ProfileFragment : Fragment() {
                 findNavController().navigate(R.id.action_profileFragment_to_userAccountFragment)
                 hideBottomNav()
             }
+
             linearOrders.setOnClickListener {
                 findNavController().navigate(R.id.action_profileFragment_to_ordersFragment)
                 hideBottomNav()

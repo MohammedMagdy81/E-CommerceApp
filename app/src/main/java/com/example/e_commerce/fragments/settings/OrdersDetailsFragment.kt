@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_commerce.R
@@ -50,6 +51,7 @@ class OrdersDetailsFragment : Fragment() {
         if (order?.status == OrderStatus.Delivered.status) {
             binding.celebrationAnim.visibility = View.VISIBLE
         }
+        binding.imgCloseOrder.setOnClickListener { findNavController().popBackStack() }
         setupStepView()
         setupProductsRv()
         setupAllOrderData()

@@ -69,7 +69,6 @@ class LoginViewModel @Inject constructor(
         runBlocking {
             _resetPassword.emit(Resources.Loading())
         }
-
         firebaseAuth.sendPasswordResetEmail(email)
             .addOnSuccessListener {
                 viewModelScope.launch {

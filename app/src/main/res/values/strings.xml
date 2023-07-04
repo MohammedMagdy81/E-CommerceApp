@@ -93,4 +93,7 @@
     <string name="order_confirmed_successfully">\"Order Confirmed Successfully \"</string>
     <string name="g_arabic">اللغة العربية</string>
     <string name="g_english">English</string>
+    <string name="g_search_now">Search Now</string>
+    <string name="g_cancel">Cancel</string>
+    <string name="item_not_found">No Item Found !</string>
 </resources>

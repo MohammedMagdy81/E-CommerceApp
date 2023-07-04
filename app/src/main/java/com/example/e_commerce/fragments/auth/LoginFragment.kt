@@ -106,7 +106,7 @@ class LoginFragment : Fragment() {
                         binding.spinKit.visibility = View.GONE
                         Snackbar.make(
                             requireView(),
-                            "link for reset password sent successfully ",
+                            "تم إرسال رابط تغيير كلمة السر من فضلك تصفح إيميلك",
                             Snackbar.LENGTH_LONG
                         ).show()
                     }

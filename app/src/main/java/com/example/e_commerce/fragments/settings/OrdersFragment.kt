@@ -40,6 +40,7 @@ class OrdersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupOrdersRv()
+        binding.ordersCloseIcon.setOnClickListener { findNavController().popBackStack() }
         collectOrdersState()
         ordersAdapter.onOrderClick = {
             val action = OrdersFragmentDirections.actionOrdersFragmentToOrdersDetailsFragment(it)

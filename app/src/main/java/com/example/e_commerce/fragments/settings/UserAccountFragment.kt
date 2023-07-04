@@ -22,8 +22,10 @@ import com.example.e_commerce.data.User
 import com.example.e_commerce.databinding.FragmentProfileBinding
 import com.example.e_commerce.databinding.FragmentUserAccountBinding
 import com.example.e_commerce.dialog.setupResetPasswordDialog
+import com.example.e_commerce.mvvm.LoginViewModel
 import com.example.e_commerce.mvvm.UserAccountViewModel
 import com.example.e_commerce.utils.Resources
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.flow.collectLatest
@@ -32,6 +34,7 @@ import kotlinx.coroutines.flow.collectLatest
 class UserAccountFragment : Fragment() {
     private lateinit var binding: FragmentUserAccountBinding
     private val viewModel by viewModels<UserAccountViewModel>()
+    private val loginViewModel by viewModels<LoginViewModel>()
 
     private var imageUri: Uri? = null
 
@@ -76,10 +79,12 @@ class UserAccountFragment : Fragment() {
             imageActivityResultLauncher.launch(intent)
         }
         binding.profileForgetPasswordTxt.setOnClickListener {
-            setupResetPasswordDialog { password ->
+            setupResetPasswordDialog { email ->
+                loginViewModel.resetPassword(email)
 
             }
         }
+        binding.profileCloseIcon.setOnClickListener { findNavController().popBackStack() }
     }
 
 
@@ -98,6 +103,26 @@ class UserAccountFragment : Fragment() {
                     is Resources.Success -> {
                         binding.profileBtnSave.revertAnimation()
                         findNavController().popBackStack()
+                    }
+                    else -> Unit
+                }
+            }
+            loginViewModel.resetPassword.collect {
+                when (it) {
+                    is Resources.Error -> {
+                        binding.profileSpinKit.visibility = View.GONE
+                        Toasty.error(requireContext(), "some error happen ! try again")
+                    }
+                    is Resources.Loading -> {
+                        binding.profileSpinKit.visibility = View.VISIBLE
+                    }
+                    is Resources.Success -> {
+                        binding.profileSpinKit.visibility = View.GONE
+                        Snackbar.make(
+                            requireView(),
+                            "تم إرسال رابط تغيير كلمة السر من فضلك تصفح إيميلك",
+                            Snackbar.LENGTH_LONG
+                        ).show()
                     }
                     else -> Unit
                 }

@@ -26,6 +26,11 @@
     <string name="first_name">الاسم الأول</string>
     <string name="last_name">الاسم الأخير</string>
 
+    <string name="g_english">English</string>
+    <string name="g_search_now">ابحث الان</string>
+    <string name="g_cancel">إلغاء</string>
+    <string name="item_not_found">لايوجد منتجات تطابق هذا البحث !</string>
+
     <string name="yes">نعم</string>
     <string name="cancel_">إلغاء</string>
     <string name="product_added_successfully">تم إضافة لمنتج إلي سلة المشتريات..</string>
