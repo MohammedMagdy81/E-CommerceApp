@@ -24,16 +24,13 @@ class SearchViewModel : ViewModel() {
 
 
     fun searchProducts(searchQuery: String) {
-        runBlocking {
-            _searchProducts.emit(Resources.Loading())
-        }
         productsCollection
             .orderBy("name")
             .startAt(searchQuery)
             .endAt(searchQuery.trim() + "\uf8ff")
 
-            .get().addOnSuccessListener {
-                val products = it.toObjects(Product::class.java)
+            .get().addOnCompleteListener {
+                val products = it.result.toObjects(Product::class.java)
                 viewModelScope.launch {
                     _searchProducts.emit(Resources.Success(products))
                 }
